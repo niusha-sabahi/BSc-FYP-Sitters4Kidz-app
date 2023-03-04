@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "905458707953",
+    "project_id": "sitters4kidzdb",
+    "storage_bucket": "sitters4kidzdb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:905458707953:android:045289528621a21b2c2850",
+        "android_client_info": {
+          "package_name": "com.example.sitters4kidz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "905458707953-o1tcvet1nk7dnfo7edp503knuhi033kg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sitters4kidz",
+            "certificate_hash": "15d4142591972320d27fe1fa09fff38def7b54b8"
+          }
+        },
+        {
+          "client_id": "905458707953-ev5u0fr83ajbo32ub2nf0h3a50kt8h8k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLuecRBL60D3h_BAPWJEZ-bQBcj5LD59c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "905458707953-ev5u0fr83ajbo32ub2nf0h3a50kt8h8k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

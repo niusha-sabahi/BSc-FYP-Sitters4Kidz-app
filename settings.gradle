@@ -1,0 +1,19 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+//had to remove this as it's new centralised dependency thing which was not working with the
+//dependencies being added in the build.gradle files. Once removed, gradle synced successfully
+/*dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}*/
+
+rootProject.name = "Sitters4Kidz"
+include ':app'
