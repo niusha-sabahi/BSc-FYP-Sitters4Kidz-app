@@ -1,6 +1,7 @@
 package com.example.sitters4kidz;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,19 +10,25 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.dynamic.ObjectWrapper;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class LogInPage extends AppCompatActivity {
-
-    FirebaseFirestore firestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,18 +36,15 @@ public class LogInPage extends AppCompatActivity {
         setContentView(R.layout.activity_log_in_page);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+        //FirebaseAuth f_auth = FirebaseAuth.getInstance();
 
-        EditText username_inp;
-        EditText password_inp;
+        EditText username_inp = (EditText) findViewById(R.id.username_inp);
+        EditText password_inp = (EditText) findViewById(R.id.password_inp);
 
-        Button log_in_butt;
         //Button sig_nup_butt;
 
-        //get inputs
-        username_inp = (EditText) findViewById(R.id.username_inp);
-        password_inp = (EditText) findViewById(R.id.password_inp);
-
-        log_in_butt = (Button) findViewById(R.id.log_in_butt);
+        // Execute this code when the 'Log In' button is pressed.
+        Button log_in_butt = (Button) findViewById(R.id.log_in_butt);
         log_in_butt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,22 +52,41 @@ public class LogInPage extends AppCompatActivity {
                 String username = username_inp.getText().toString();
                 String password = password_inp.getText().toString();
 
-                boolean user_found = false;
+                // Retrieve data for the document by the name of the username entered in the 'user_logins' collection.
+                DocumentReference doc_ref = db.collection("user_logins")
+                        .document(username);
+                doc_ref.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 
+                        String actual_pass;
 
-                //move to home page when a log in match is found
-                Intent intent = new Intent(LogInPage.this,
-                        HomePage.class);
-                startActivity(intent);
-
-                if(user_found == false){
-                    showToast("the wrong password or username were entered. " +
-                            "please try again :).");
-                }
-
-
-
-
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                // If the document retrieval is successful and the document exists, load the 'password' field
+                                // for that document into the 'actual_pass' variable. This stores the actual password linked
+                                // to the username entered.
+                                actual_pass = document.getData().get("password").toString();
+                                // If the password entered is the same as the expected password for the username entered,
+                                // enter the next activity (HomePage).
+                                if (password.equals(actual_pass)){
+                                    Intent intent = new Intent(LogInPage.this,
+                                            HomePage.class);
+                                    startActivity(intent);
+                                } else {
+                                    showToast("the wrong password was entered. " +
+                                            "please try again :).");
+                                }
+                            } else {
+                                showToast("the wrong username was entered. " +
+                                        "please try again :).");
+                            }
+                        } else {
+                            Log.d("MSG", "get failed with ", task.getException());
+                        }
+                    }
+                });
 
 
 
