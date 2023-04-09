@@ -41,8 +41,6 @@ public class LogInPage extends AppCompatActivity {
         EditText username_inp = (EditText) findViewById(R.id.username_inp);
         EditText password_inp = (EditText) findViewById(R.id.password_inp);
 
-        //Button sig_nup_butt;
-
         // Execute this code when the 'Log In' button is pressed.
         Button log_in_butt = (Button) findViewById(R.id.log_in_butt);
         log_in_butt.setOnClickListener(new View.OnClickListener() {
@@ -89,9 +87,6 @@ public class LogInPage extends AppCompatActivity {
                 });
 
 
-
-
-
                 // Deletes a Document based on ID in a Collection
                 /*db.collection("cities").document("LA")
                         .delete()
@@ -133,6 +128,16 @@ public class LogInPage extends AppCompatActivity {
             }
         });
 
+        // Execute this code when the 'Sign Up' button is pressed, takes user to the 'Sign Up' page.
+        Button sign_up_butt = (Button) findViewById(R.id.sign_up_butt);
+        sign_up_butt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent2 = new Intent(LogInPage.this,
+                        SignUpPage.class);
+                startActivity(intent2);
+            }
+        });
     }
 
     // A function for generating Toasts. To simplify code, and reduce repetition.
