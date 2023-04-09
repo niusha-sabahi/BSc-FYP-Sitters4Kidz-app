@@ -59,6 +59,7 @@ public class LogInPage extends AppCompatActivity {
 
                         String actual_pass;
 
+                        // TODO: maybe remove the bulky success listener chekcs? or add them to others too?
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
@@ -67,7 +68,7 @@ public class LogInPage extends AppCompatActivity {
                                 // to the username entered.
                                 actual_pass = document.getData().get("password").toString();
                                 // If the password entered is the same as the expected password for the username entered,
-                                // enter the next activity (HomePage).
+                                // enter the 'Home' page.
                                 if (password.equals(actual_pass)){
                                     Intent intent = new Intent(LogInPage.this,
                                             HomePage.class);
@@ -110,6 +111,7 @@ public class LogInPage extends AppCompatActivity {
                 city.put("state", "CA");
                 city.put("country", "USA");
 
+                // TODO: if decided, add success listeners to all data additions to db.
                 db.collection("cities").document("LA")
                         .set(city)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
