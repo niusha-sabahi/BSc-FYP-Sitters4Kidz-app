@@ -41,6 +41,17 @@ public class LogInPage extends AppCompatActivity {
         EditText username_inp = (EditText) findViewById(R.id.username_inp);
         EditText password_inp = (EditText) findViewById(R.id.password_inp);
 
+        // Execute this code when the 'Sign Up' button is pressed, takes user to the 'Sign Up' page.
+        Button sign_up_butt = (Button) findViewById(R.id.sign_up_butt);
+        sign_up_butt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent2 = new Intent(LogInPage.this,
+                        SignUpPage.class);
+                startActivity(intent2);
+            }
+        });
+
         // Execute this code when the 'Log In' button is pressed.
         Button log_in_butt = (Button) findViewById(R.id.log_in_butt);
         log_in_butt.setOnClickListener(new View.OnClickListener() {
@@ -50,43 +61,50 @@ public class LogInPage extends AppCompatActivity {
                 String username = username_inp.getText().toString();
                 String password = password_inp.getText().toString();
 
-                // Retrieve data for the document by the name of the username entered in the 'user_logins' collection.
-                DocumentReference doc_ref = db.collection("user_logins")
-                        .document(username);
-                doc_ref.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(username.isEmpty() | password.isEmpty()) {
+                    showToast("some information hasn't been entered, please try again");
 
-                        String actual_pass;
+                } else {
+                    // Retrieve data for the document by the name of the username entered, in the 'users' collection.
+                    DocumentReference doc_ref = db.collection("users")
+                            .document(username);
+                    doc_ref.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 
-                        // TODO: maybe remove the bulky success listener chekcs? or add them to others too?
-                        if (task.isSuccessful()) {
-                            DocumentSnapshot document = task.getResult();
-                            if (document.exists()) {
-                                // If the document retrieval is successful and the document exists, load the 'password' field
-                                // for that document into the 'actual_pass' variable. This stores the actual password linked
-                                // to the username entered.
-                                actual_pass = document.getData().get("password").toString();
-                                // If the password entered is the same as the expected password for the username entered,
-                                // enter the 'Home' page.
-                                if (password.equals(actual_pass)){
-                                    Intent intent = new Intent(LogInPage.this,
-                                            HomePage.class);
-                                    startActivity(intent);
+                            String actual_pass;
+
+                            // TODO: maybe remove the bulky success listener chekcs? or add them to others too?
+                            if (task.isSuccessful()) {
+                                DocumentSnapshot document = task.getResult();
+
+                                if (document.exists()) {
+                                    // If the document retrieval is successful and the document exists, load the 'password' field
+                                    // for that document into the 'actual_pass' variable. This stores the actual password linked
+                                    // to the username entered.
+                                    actual_pass = document.getData().get("password").toString();
+
+                                    // If the password entered is the same as the expected password for the username entered,
+                                    // enter the 'Home' page.
+                                    if (password.equals(actual_pass)) {
+                                        Intent intent = new Intent(LogInPage.this,
+                                                HomePage.class);
+                                        startActivity(intent);
+
+                                    } else {
+                                        showToast("the wrong password was entered, " +
+                                                "please try again :)");
+                                    }
                                 } else {
-                                    showToast("the wrong password was entered. " +
-                                            "please try again :).");
+                                    showToast("the wrong username was entered, " +
+                                            "please try again :)");
                                 }
                             } else {
-                                showToast("the wrong username was entered. " +
-                                        "please try again :).");
+                                Log.e("ERROR: ", "get failed with ", task.getException());
                             }
-                        } else {
-                            Log.d("MSG", "get failed with ", task.getException());
                         }
-                    }
-                });
-
+                    });
+                }
 
                 // Deletes a Document based on ID in a Collection
                 /*db.collection("cities").document("LA")
@@ -102,7 +120,7 @@ public class LogInPage extends AppCompatActivity {
                             public void onFailure(@NonNull Exception e) {
                                 Log.w("F", "Error deleting document", e);
                             }
-                        });*/
+                        });**
 
                 /*
                 // creates and adds a new Document to a Collection with a specific ID
@@ -130,16 +148,8 @@ public class LogInPage extends AppCompatActivity {
             }
         });
 
-        // Execute this code when the 'Sign Up' button is pressed, takes user to the 'Sign Up' page.
-        Button sign_up_butt = (Button) findViewById(R.id.sign_up_butt);
-        sign_up_butt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent2 = new Intent(LogInPage.this,
-                        SignUpPage.class);
-                startActivity(intent2);
-            }
-        });
+
+
     }
 
     // A function for generating Toasts. To simplify code, and reduce repetition.

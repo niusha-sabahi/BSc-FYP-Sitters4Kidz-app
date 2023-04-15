@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00BCD4"
+    android:background="#2EC4B6"
     tools:context=".LogInPage">
 
     <TextView
@@ -14,9 +14,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="8dp"
+        android:fontFamily="@font/asap"
         android:text="Sitters4Kidz"
         android:textAlignment="center"
-        android:textColor="#000000"
+        android:textColor="#14564F"
         android:textSize="60sp"
         android:textStyle="bold"
         android:typeface="normal"
@@ -24,21 +25,6 @@
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/password_inp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="24dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/log_in_butt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.416"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/username_inp"
@@ -55,17 +41,6 @@
         app:layout_constraintHorizontal_bias="0.405"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/sign_up_butt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="152dp"
-        android:text="sign up"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.514"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
         android:id="@+id/username_text"
         android:layout_width="wrap_content"
@@ -74,8 +49,9 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="12dp"
+        android:fontFamily="@font/asap"
         android:text="username"
-        android:textColor="#000000"
+        android:textColor="#14564F"
         android:textSize="27sp"
         android:textStyle="bold"
         android:typeface="normal"
@@ -92,9 +68,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="@font/asap"
         android:text="password"
-        android:textColor="#000000"
+        android:textColor="#14564F"
         android:textSize="27sp"
         android:textStyle="bold"
         android:typeface="normal"
@@ -107,11 +84,47 @@
         android:id="@+id/log_in_butt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="24dp"
+        android:background="#FFFFFF"
+        android:fontFamily="@font/asap"
         android:text="log in"
+        android:textColor="#3B3B3B"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:typeface="normal"
         app:layout_constraintBottom_toTopOf="@+id/sign_up_butt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/sign_up_butt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="148dp"
+        android:background="#FFFFFF"
+        android:fontFamily="@font/asap"
+        android:text="sign up"
+        android:textColor="#3B3B3B"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/password_inp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/log_in_butt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.412"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
