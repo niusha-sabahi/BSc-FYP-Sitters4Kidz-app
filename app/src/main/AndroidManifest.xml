@@ -14,10 +14,25 @@
         android:theme="@style/Theme.Sitters4Kidz"
         tools:targetApi="31">
         <activity
-            android:name=".SignUpPage"
+            android:name=".MessagesMenu"
             android:exported="false" />
         <activity
-            android:name=".HomePage"
+            android:name=".ParentJobsMenuPage"
+            android:exported="false" />
+        <activity
+            android:name=".ChildcarerJobsMenuPage"
+            android:exported="false" />
+        <activity
+            android:name=".MainMenuPage"
+            android:exported="false" />
+        <activity
+            android:name=".ParentHomePage"
+            android:exported="false" />
+        <activity
+            android:name=".ChildcarerHomePage"
+            android:exported="false" />
+        <activity
+            android:name=".SignUpPage"
             android:exported="false" />
         <activity
             android:name=".LogInPage"

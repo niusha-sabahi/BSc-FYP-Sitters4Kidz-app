@@ -46,9 +46,9 @@ public class LogInPage extends AppCompatActivity {
         sign_up_butt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent2 = new Intent(LogInPage.this,
+                Intent intent = new Intent(LogInPage.this,
                         SignUpPage.class);
-                startActivity(intent2);
+                startActivity(intent);
             }
         });
 
@@ -72,8 +72,6 @@ public class LogInPage extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 
-                            String actual_pass;
-
                             // TODO: maybe remove the bulky success listener chekcs? or add them to others too?
                             if (task.isSuccessful()) {
                                 DocumentSnapshot document = task.getResult();
@@ -82,15 +80,21 @@ public class LogInPage extends AppCompatActivity {
                                     // If the document retrieval is successful and the document exists, load the 'password' field
                                     // for that document into the 'actual_pass' variable. This stores the actual password linked
                                     // to the username entered.
-                                    actual_pass = document.getData().get("password").toString();
+                                    String actual_pass = document.getData().get("password").toString();
+                                    String user_type = document.getData().get("user_type").toString();
 
                                     // If the password entered is the same as the expected password for the username entered,
-                                    // enter the 'Home' page.
+                                    // enter the 'Home' page, which is different for parent and child-carer users.
                                     if (password.equals(actual_pass)) {
-                                        Intent intent = new Intent(LogInPage.this,
-                                                HomePage.class);
+                                        Intent intent;
+                                        if (user_type.equals("parent")) {
+                                            intent = new Intent(LogInPage.this,
+                                                    ParentHomePage.class);
+                                        } else {
+                                            intent = new Intent(LogInPage.this,
+                                                    ChildcarerHomePage.class);
+                                        }
                                         startActivity(intent);
-
                                     } else {
                                         showToast("the wrong password was entered, " +
                                                 "please try again :)");

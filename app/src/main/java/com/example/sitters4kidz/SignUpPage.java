@@ -93,10 +93,18 @@ public class SignUpPage extends AppCompatActivity {
                                             db.collection("users").document(username)
                                                     .set(user);
 
-                                            // Takes the user to the 'Home' page.
-                                            Intent intent = new Intent(SignUpPage.this,
-                                                    HomePage.class);
+                                            // Takes the user to the 'Home' page, which is different for
+                                            // parent and child-carer users.
+                                            Intent intent;
+                                            if (user_type.equals("parent")) {
+                                                intent = new Intent(SignUpPage.this,
+                                                        ParentHomePage.class);
+                                            } else {
+                                                intent = new Intent(SignUpPage.this,
+                                                        ChildcarerHomePage.class);
+                                            }
                                             startActivity(intent);
+
                                         } else {
                                             showToast("the password is too short, or too long, " +
                                                     "please enter one between the range of 8-16 " +

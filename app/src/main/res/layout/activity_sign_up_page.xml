@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2EC4B6"
+    android:background="#FFFFFF"
     tools:context=".SignUpPage">
 
     <RadioGroup
@@ -23,18 +23,20 @@
             android:id="@+id/radio_parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:buttonTint="#2EC4B6"
+            android:checked="true"
             android:fontFamily="@font/asap"
             android:text="Parent"
             android:textColor="#14564F"
             android:textSize="27sp"
             android:textStyle="bold"
-            android:typeface="normal"
-            android:checked="true"/>
+            android:typeface="normal" />
 
         <RadioButton
             android:id="@+id/radio_childcarer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:buttonTint="#2EC4B6"
             android:fontFamily="@font/asap"
             android:text="Child-carer"
             android:textColor="#14564F"
@@ -53,6 +55,7 @@
         android:width="300sp"
         android:ems="10"
         android:inputType="textPassword"
+        android:textColor="#3B3B3B"
         app:layout_constraintBottom_toTopOf="@+id/confirm_password_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.431"
@@ -99,10 +102,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="72dp"
-        android:background="#FFFFFF"
+        android:background="#2EC4B6"
         android:fontFamily="@font/asap"
         android:text="Submit"
-        android:textColor="#3B3B3B"
+        android:textColor="#14564F"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -140,6 +143,7 @@
         android:width="300sp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textColor="#3B3B3B"
         app:layout_constraintBottom_toTopOf="@+id/password_text2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.421"
@@ -155,9 +159,25 @@
         android:width="300sp"
         android:ems="10"
         android:inputType="textPassword"
+        android:textColor="#3B3B3B"
         app:layout_constraintBottom_toTopOf="@+id/user_type_radio_group"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.442"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="415dp"
+        android:layout_height="74dp"
+        android:background="#14564F"
+        android:fontFamily="@font/asap"
+        android:text="  New Account"
+        android:textColor="#2EC4B6"
+        android:textSize="45sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
