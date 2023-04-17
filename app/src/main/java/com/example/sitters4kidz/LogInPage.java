@@ -38,6 +38,7 @@ public class LogInPage extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         //FirebaseAuth f_auth = FirebaseAuth.getInstance();
 
+        // Get all inputs
         EditText username_inp = (EditText) findViewById(R.id.username_inp);
         EditText password_inp = (EditText) findViewById(R.id.password_inp);
 

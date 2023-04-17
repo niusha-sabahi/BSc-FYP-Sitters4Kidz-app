@@ -16,6 +16,7 @@ public class ParentHomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parent_home_page);
 
+        // Get all inputs
         EditText city_inp = (EditText) findViewById(R.id.city_inp);
         EditText payl_inp = (EditText) findViewById(R.id.pay_lower_inp);
         EditText payu_inp = (EditText) findViewById(R.id.pay_upper_inp);

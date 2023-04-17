@@ -31,9 +31,11 @@ public class SignUpPage extends AppCompatActivity {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+        // Get all inputs
         EditText username_inp = (EditText) findViewById(R.id.username_inp2);
         EditText password_inp = (EditText) findViewById(R.id.password_inp2);
         EditText confirm_password_inp = (EditText) findViewById(R.id.confirm_password_inp);
+        EditText city_inp = (EditText) findViewById(R.id.city_inp);
 
         RadioGroup rgroup_usertype = findViewById(R.id.user_type_radio_group);
 
@@ -46,9 +48,10 @@ public class SignUpPage extends AppCompatActivity {
                 String username = username_inp.getText().toString();
                 String password = password_inp.getText().toString();
                 String conf_password = confirm_password_inp.getText().toString();
+                String city = city_inp.getText().toString();
 
                 // Check that all fields have been entered
-                if (username.isEmpty() | password.isEmpty() | conf_password.isEmpty()) {
+                if (username.isEmpty() | password.isEmpty() | conf_password.isEmpty() | city.isEmpty()) {
                     showToast("some information hasn't been entered, please try again");
                 } else {
 
@@ -70,40 +73,54 @@ public class SignUpPage extends AppCompatActivity {
                                 // it to the database as the user's password.
                                 if (password.equals(conf_password)) {
 
-                                    // Checks if the length of the username and password entered are in
-                                    // the right range.
-                                    if (3 <= username.length() && username.length() <= 15) {
+                                    // Checks if the length of the username, password and city/town
+                                    // name entered are in the right range, and that the username
+                                    // contains no empty spaces, and city/town name only includes letters.
+                                    if (3 <= username.length() && username.length() <= 15
+                                            && !username.contains(" ")) {
+
                                         if (8 <= password.length() && password.length() <= 16) {
 
-                                            int rad_ID = rgroup_usertype.getCheckedRadioButtonId();
-                                            RadioButton rbutton_usertype = findViewById(rad_ID);
-                                            String user_type = rbutton_usertype.getText().toString();
+                                            if (2 <= city.length() && city.length() <= 30
+                                                    && city.matches("^[a-zA-Z]*$")) {
 
-                                            if (user_type.equals("Child-carer")) {
-                                                user_type = "childcarer";
+                                                int rad_ID = rgroup_usertype.getCheckedRadioButtonId();
+                                                RadioButton rbutton_usertype = findViewById(rad_ID);
+                                                String user_type = rbutton_usertype.getText().toString();
+
+                                                if (user_type.equals("Child-carer")) {
+                                                    user_type = "childcarer";
+                                                } else {
+                                                    user_type = "parent";
+                                                }
+
+                                                // creates and adds a new Document to the 'users' Collection,
+                                                // for the new user account.
+                                                Map<String, Object> user = new HashMap<>();
+                                                user.put("password", password);
+                                                user.put("user_type", user_type);
+                                                user.put("city", city);
+                                                db.collection("users").document(username)
+                                                        .set(user);
+
+                                                // Takes the user to the 'Home' page, which is different for
+                                                // parent and child-carer users.
+                                                Intent intent;
+                                                if (user_type.equals("parent")) {
+                                                    intent = new Intent(SignUpPage.this,
+                                                            ParentHomePage.class);
+                                                } else {
+                                                    intent = new Intent(SignUpPage.this,
+                                                            ChildcarerHomePage.class);
+                                                }
+                                                startActivity(intent);
+
                                             } else {
-                                                user_type = "parent";
+                                                showToast("the city/town name is invalid, " +
+                                                        "please enter one between the range of 2-30 " +
+                                                        "characters, and one which only includes " +
+                                                        "characters a-z and A-Z");
                                             }
-
-                                            // creates and adds a new Document to the 'users' Collection,
-                                            // for the new user account.
-                                            Map<String, Object> user = new HashMap<>();
-                                            user.put("password", password);
-                                            user.put("user_type", user_type);
-                                            db.collection("users").document(username)
-                                                    .set(user);
-
-                                            // Takes the user to the 'Home' page, which is different for
-                                            // parent and child-carer users.
-                                            Intent intent;
-                                            if (user_type.equals("parent")) {
-                                                intent = new Intent(SignUpPage.this,
-                                                        ParentHomePage.class);
-                                            } else {
-                                                intent = new Intent(SignUpPage.this,
-                                                        ChildcarerHomePage.class);
-                                            }
-                                            startActivity(intent);
 
                                         } else {
                                             showToast("the password is too short, or too long, " +
@@ -113,7 +130,7 @@ public class SignUpPage extends AppCompatActivity {
                                     } else {
                                         showToast("the username is too short, or too long, " +
                                                 "please enter one between the range of 3-15 " +
-                                                "characters");
+                                                "characters, there must also be no empty spaces");
                                     }
 
                                 } else {

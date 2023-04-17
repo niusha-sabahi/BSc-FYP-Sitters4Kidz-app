@@ -16,6 +16,7 @@ public class ChildcarerHomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_childcarer_home_page);
 
+        // Get all inputs
         EditText city_inp = (EditText) findViewById(R.id.city_inp);
         EditText agel_inp = (EditText) findViewById(R.id.age_lower_inp);
         EditText ageu_inp = (EditText) findViewById(R.id.age_upper_inp);

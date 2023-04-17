@@ -13,10 +13,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="84dp"
+        android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toTopOf="@+id/submit_sing_up_butt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.185"
+        app:layout_constraintHorizontal_bias="0.186"
         app:layout_constraintStart_toStartOf="parent">
 
         <RadioButton
@@ -51,9 +51,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="4dp"
         android:width="300sp"
-        android:ems="10"
+        android:ems="7"
         android:inputType="textPassword"
         android:textColor="#3B3B3B"
         app:layout_constraintBottom_toTopOf="@+id/confirm_password_text"
@@ -61,55 +61,36 @@
         app:layout_constraintHorizontal_bias="0.431"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/confirm_password_text"
+    <EditText
+        android:id="@+id/confirm_password_inp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="4dp"
-        android:fontFamily="@font/asap"
-        android:text="confirm password"
-        android:textColor="#14564F"
-        android:textSize="27sp"
-        android:textStyle="bold"
-        android:typeface="normal"
-        app:layout_constraintBottom_toTopOf="@+id/confirm_password_inp"
+        android:width="300sp"
+        android:ems="7"
+        android:inputType="textPassword"
+        android:textColor="#3B3B3B"
+        app:layout_constraintBottom_toTopOf="@+id/city_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.227"
+        app:layout_constraintHorizontal_bias="0.442"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/password_text2"
+    <EditText
+        android:id="@+id/username_inp2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="4dp"
-        android:fontFamily="@font/asap"
-        android:text="password"
-        android:textColor="#14564F"
-        android:textSize="27sp"
-        android:textStyle="bold"
-        android:typeface="normal"
-        app:layout_constraintBottom_toTopOf="@+id/password_inp2"
+        android:width="300sp"
+        android:ems="7"
+        android:inputType="textPersonName"
+        android:textColor="#3B3B3B"
+        app:layout_constraintBottom_toTopOf="@+id/password_text2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.147"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/submit_sing_up_butt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="72dp"
-        android:background="#2EC4B6"
-        android:fontFamily="@font/asap"
-        android:text="Submit"
-        android:textColor="#14564F"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.421"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -128,41 +109,60 @@
         android:typeface="normal"
         app:layout_constraintBottom_toTopOf="@+id/username_inp2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.149"
+        app:layout_constraintHorizontal_bias="0.148"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
-    <EditText
-        android:id="@+id/username_inp2"
+    <TextView
+        android:id="@+id/password_text2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="32dp"
-        android:width="300sp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textColor="#3B3B3B"
-        app:layout_constraintBottom_toTopOf="@+id/password_text2"
+        android:layout_marginBottom="2dp"
+        android:fontFamily="@font/asap"
+        android:text="password"
+        android:textColor="#14564F"
+        android:textSize="27sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintBottom_toTopOf="@+id/password_inp2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.421"
+        app:layout_constraintHorizontal_bias="0.148"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/confirm_password_inp"
+    <TextView
+        android:id="@+id/confirm_password_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="32dp"
-        android:width="300sp"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:textColor="#3B3B3B"
-        app:layout_constraintBottom_toTopOf="@+id/user_type_radio_group"
+        android:layout_marginBottom="2dp"
+        android:fontFamily="@font/asap"
+        android:text="confirm password"
+        android:textColor="#14564F"
+        android:textSize="27sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintBottom_toTopOf="@+id/confirm_password_inp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.442"
+        app:layout_constraintHorizontal_bias="0.228"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/submit_sing_up_butt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="72dp"
+        android:background="#2EC4B6"
+        android:fontFamily="@font/asap"
+        android:text="Submit"
+        android:textColor="#14564F"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -179,5 +179,39 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/city_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="2dp"
+        android:fontFamily="@font/asap"
+        android:text="city/town"
+        android:textColor="#14564F"
+        android:textSize="27sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintBottom_toTopOf="@+id/city_inp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.151"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/city_inp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="40dp"
+        android:width="300sp"
+        android:ems="7"
+        android:inputType="textPersonName"
+        android:textColor="#3B3B3B"
+        app:layout_constraintBottom_toTopOf="@+id/user_type_radio_group"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.452"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
