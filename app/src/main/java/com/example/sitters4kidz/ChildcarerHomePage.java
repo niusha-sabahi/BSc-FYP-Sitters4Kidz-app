@@ -34,13 +34,13 @@ public class ChildcarerHomePage extends AppCompatActivity {
         });
 
         // Execute this code when the menu button in the top-left corner is pressed,
-        // takes user to the 'Main Menu' page.
+        // takes user to the 'Settings' page.
         ImageButton menu_button = (ImageButton) findViewById(R.id.menu_butt);
         menu_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ChildcarerHomePage.this,
-                        MainMenuPage.class);
+                        SettingsPage.class);
                 startActivity(intent);
             }
         });
@@ -52,7 +52,7 @@ public class ChildcarerHomePage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ChildcarerHomePage.this,
-                        MainMenuPage.class);
+                        ChildcarerJobsMenuPage.class);
                 startActivity(intent);
             }
         });

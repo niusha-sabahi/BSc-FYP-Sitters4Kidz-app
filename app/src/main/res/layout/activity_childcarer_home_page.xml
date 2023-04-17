@@ -26,8 +26,8 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_width="417dp"
+        android:layout_height="238dp"
         android:background="#2EC4B6"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
@@ -106,10 +106,10 @@
         android:typeface="normal"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintEnd_toStartOf="@+id/city_inp"
-        app:layout_constraintHorizontal_bias="0.725"
+        app:layout_constraintHorizontal_bias="0.123"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.163" />
+        app:layout_constraintVertical_bias="0.21" />
 
     <TextView
         android:id="@+id/range_text"
@@ -125,13 +125,13 @@
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.467" />
+        app:layout_constraintVertical_bias="0.545" />
 
     <TextView
         android:id="@+id/to_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="136dp"
+        android:layout_marginEnd="132dp"
         android:fontFamily="@font/asap"
         android:text="to"
         android:textColor="#14564F"
@@ -141,49 +141,49 @@
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.467" />
+        app:layout_constraintVertical_bias="0.545" />
 
     <EditText
         android:id="@+id/age_lower_inp"
-        android:layout_width="95dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginEnd="2dp"
         android:layout_marginBottom="32dp"
-        android:ems="10"
+        android:ems="3"
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintEnd_toStartOf="@+id/to_text"
-        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintHorizontal_bias="0.863"
         app:layout_constraintStart_toEndOf="@+id/range_text"
         app:layout_constraintTop_toBottomOf="@+id/city_inp"
-        app:layout_constraintVertical_bias="0.06" />
+        app:layout_constraintVertical_bias="0.112" />
 
     <EditText
         android:id="@+id/city_inp"
-        android:layout_width="230dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:layout_marginEnd="22dp"
-        android:ems="10"
+        android:layout_marginEnd="60dp"
+        android:ems="8"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/age_upper_inp"
-        android:layout_width="95dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
         android:layout_marginTop="17dp"
         android:layout_marginBottom="32dp"
-        android:ems="10"
+        android:ems="3"
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.388"
+        app:layout_constraintHorizontal_bias="0.119"
         app:layout_constraintStart_toEndOf="@+id/to_text"
         app:layout_constraintTop_toBottomOf="@+id/city_inp"
-        app:layout_constraintVertical_bias="0.045" />
+        app:layout_constraintVertical_bias="0.112" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
