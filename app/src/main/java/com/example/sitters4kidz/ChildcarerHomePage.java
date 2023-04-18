@@ -1,6 +1,8 @@
 package com.example.sitters4kidz;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ChildcarerHomePage extends AppCompatActivity {
 
@@ -21,6 +26,9 @@ public class ChildcarerHomePage extends AppCompatActivity {
         EditText agel_inp = (EditText) findViewById(R.id.age_lower_inp);
         EditText ageu_inp = (EditText) findViewById(R.id.age_upper_inp);
 
+        RecyclerView search_results = findViewById(R.id.childcarer_search_recyclerview);
+        search_results.setLayoutManager(new LinearLayoutManager(this));
+
         // Execute this code when the 'Search' button is pressed.
         Button search_butt = (Button) findViewById(R.id.search_butt);
         search_butt.setOnClickListener(new View.OnClickListener() {
@@ -30,6 +38,68 @@ public class ChildcarerHomePage extends AppCompatActivity {
                 String city = city_inp.getText().toString();
                 String agel = agel_inp.getText().toString();
                 String ageu = ageu_inp.getText().toString();
+
+                List<ChildcarerSearchItem> items = new ArrayList<ChildcarerSearchItem>();
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 2!"));
+                items.add(new ChildcarerSearchItem("parent user 3!"));
+                items.add(new ChildcarerSearchItem("parent user 4!"));
+                items.add(new ChildcarerSearchItem("parent user 5!"));
+                items.add(new ChildcarerSearchItem("parent user 6!"));
+                items.add(new ChildcarerSearchItem("parent user 7!"));
+                items.add(new ChildcarerSearchItem("parent user 9!"));
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 55!"));
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 99!"));
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 90!"));
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 1000!"));
+                items.add(new ChildcarerSearchItem("parent user 10000!"));
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 2!"));
+                items.add(new ChildcarerSearchItem("parent user 3!"));
+                items.add(new ChildcarerSearchItem("parent user 4!"));
+                items.add(new ChildcarerSearchItem("parent user 5!"));
+                items.add(new ChildcarerSearchItem("parent user 6!"));
+                items.add(new ChildcarerSearchItem("parent user 7!"));
+                items.add(new ChildcarerSearchItem("parent user 9!"));
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 55!"));
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 99!"));
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 90!"));
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 1!"));
+                items.add(new ChildcarerSearchItem("parent user 1000!"));
+                items.add(new ChildcarerSearchItem("parent user 10000!"));
+
+                search_results.setAdapter(new ChildcarerSearchAdapter(getApplicationContext(), items));
 
             }
         });
