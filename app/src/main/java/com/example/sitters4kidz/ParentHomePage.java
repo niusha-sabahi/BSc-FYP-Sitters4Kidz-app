@@ -65,7 +65,7 @@ public class ParentHomePage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ParentHomePage.this,
-                        MessagesMenu.class);
+                        MessagesMenuPage.class);
                 startActivity(intent);
             }
         });

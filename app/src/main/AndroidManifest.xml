@@ -17,7 +17,7 @@
             android:name=".SettingsPage"
             android:exported="false" />
         <activity
-            android:name=".MessagesMenu"
+            android:name=".MessagesMenuPage"
             android:exported="false" />
         <activity
             android:name=".ParentJobsMenuPage"

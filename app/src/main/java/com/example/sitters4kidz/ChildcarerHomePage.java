@@ -14,7 +14,7 @@ import android.widget.ImageButton;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChildcarerHomePage extends AppCompatActivity {
+public class ChildcarerHomePage extends AppCompatActivity implements RecyclerViewInterface{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class ChildcarerHomePage extends AppCompatActivity {
         EditText agel_inp = (EditText) findViewById(R.id.age_lower_inp);
         EditText ageu_inp = (EditText) findViewById(R.id.age_upper_inp);
 
-        RecyclerView search_results = findViewById(R.id.childcarer_search_recyclerview);
+        RecyclerView search_results = findViewById(R.id.childcarer_homepage_search_recyclerview);
         search_results.setLayoutManager(new LinearLayoutManager(this));
 
         // Execute this code when the 'Search' button is pressed.
@@ -39,67 +39,13 @@ public class ChildcarerHomePage extends AppCompatActivity {
                 String agel = agel_inp.getText().toString();
                 String ageu = ageu_inp.getText().toString();
 
-                List<ChildcarerSearchItem> items = new ArrayList<ChildcarerSearchItem>();
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 2!"));
-                items.add(new ChildcarerSearchItem("parent user 3!"));
-                items.add(new ChildcarerSearchItem("parent user 4!"));
-                items.add(new ChildcarerSearchItem("parent user 5!"));
-                items.add(new ChildcarerSearchItem("parent user 6!"));
-                items.add(new ChildcarerSearchItem("parent user 7!"));
-                items.add(new ChildcarerSearchItem("parent user 9!"));
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 55!"));
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 99!"));
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 90!"));
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 1000!"));
-                items.add(new ChildcarerSearchItem("parent user 10000!"));
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 2!"));
-                items.add(new ChildcarerSearchItem("parent user 3!"));
-                items.add(new ChildcarerSearchItem("parent user 4!"));
-                items.add(new ChildcarerSearchItem("parent user 5!"));
-                items.add(new ChildcarerSearchItem("parent user 6!"));
-                items.add(new ChildcarerSearchItem("parent user 7!"));
-                items.add(new ChildcarerSearchItem("parent user 9!"));
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 55!"));
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 99!"));
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 90!"));
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 1!"));
-                items.add(new ChildcarerSearchItem("parent user 1000!"));
-                items.add(new ChildcarerSearchItem("parent user 10000!"));
+                ArrayList<HomePageSearchItem> items = new ArrayList<>();
+                for ( int i = 0; i < 31; i++){
+                    items.add(new HomePageSearchItem("parent user " + i));
+                }
 
-                search_results.setAdapter(new ChildcarerSearchAdapter(getApplicationContext(), items));
+                HomePageSearchAdapter adapter = new HomePageSearchAdapter(getApplicationContext(), items);
+                search_results.setAdapter(adapter);
 
             }
         });
@@ -135,10 +81,15 @@ public class ChildcarerHomePage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ChildcarerHomePage.this,
-                        MessagesMenu.class);
+                        MessagesMenuPage.class);
                 startActivity(intent);
             }
         });
+
+    }
+
+    @Override
+    public void onClickRecyclerItem(int position) {
 
     }
 }
