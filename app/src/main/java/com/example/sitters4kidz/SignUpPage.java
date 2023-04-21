@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,7 +39,7 @@ public class SignUpPage extends AppCompatActivity {
         RadioGroup rgroup_usertype = findViewById(R.id.user_type_radio_group);
 
         // Execute this code when the 'Submit' button is pressed.
-        Button submit_butt = (Button) findViewById(R.id.submit_sing_up_butt);
+        Button submit_butt = (Button) findViewById(R.id.submit_sing_up_butt2);
         submit_butt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,7 +50,8 @@ public class SignUpPage extends AppCompatActivity {
                 String city = city_inp.getText().toString();
 
                 // Check that all fields have been entered
-                if (username.isEmpty() | password.isEmpty() | conf_password.isEmpty() | city.isEmpty()) {
+                if (username.isEmpty() | password.isEmpty() | conf_password.isEmpty()
+                        | city.isEmpty()) {
                     showToast("some information hasn't been entered, please try again");
                 } else {
 
@@ -84,6 +84,8 @@ public class SignUpPage extends AppCompatActivity {
                                             if (2 <= city.length() && city.length() <= 30
                                                     && city.matches("^[a-zA-Z]*$")) {
 
+                                                // Get the user type selected by the user from the
+                                                // radio buttons
                                                 int rad_ID = rgroup_usertype.getCheckedRadioButtonId();
                                                 RadioButton rbutton_usertype = findViewById(rad_ID);
                                                 String user_type = rbutton_usertype.getText().toString();
@@ -94,21 +96,17 @@ public class SignUpPage extends AppCompatActivity {
                                                     user_type = "parent";
                                                 }
 
-                                                // creates and adds a new Document to the 'users' Collection,
-                                                // for the new user account.
-                                                Map<String, Object> user = new HashMap<>();
-                                                user.put("password", password);
-                                                user.put("user_type", user_type);
-                                                user.put("city", city);
-                                                db.collection("users").document(username)
-                                                        .set(user);
-
-                                                // Takes the user to the 'Home' page, which is different for
-                                                // parent and child-carer users.
+                                                // Takes the user to the next page, which is different for
+                                                // parent and child-carer users, where they will enter
+                                                // further details.
                                                 Intent intent;
                                                 if (user_type.equals("parent")) {
                                                     intent = new Intent(SignUpPage.this,
-                                                            ParentHomePage.class);
+                                                            ParentSignUpXtraPage.class);
+                                                    intent.putExtra("USERNAME", username);
+                                                    intent.putExtra("PASSWORD", password);
+                                                    intent.putExtra("USER_TYPE", user_type);
+                                                    intent.putExtra("CITY", city.toLowerCase());
                                                 } else {
                                                     intent = new Intent(SignUpPage.this,
                                                             ChildcarerHomePage.class);
@@ -139,8 +137,6 @@ public class SignUpPage extends AppCompatActivity {
                                 }
 
                             }
-
-
                         }
                     });
                 }

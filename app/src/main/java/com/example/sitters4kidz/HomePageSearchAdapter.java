@@ -15,12 +15,16 @@ import java.util.List;
 
 public class HomePageSearchAdapter extends RecyclerView.Adapter<HomePageSearchAdapter.HomePageSearchViewHolder>{
 
+    private final RecyclerViewInterface recyclerViewInterface;
+
     Context context;
     ArrayList<HomePageSearchItem> items;
 
-    public HomePageSearchAdapter(Context context, ArrayList<HomePageSearchItem> items){
+    public HomePageSearchAdapter(Context context, ArrayList<HomePageSearchItem> items,
+                                 RecyclerViewInterface recyclerViewInterface){
         this.context = context;
         this.items = items;
+        this.recyclerViewInterface = recyclerViewInterface;
     }
 
     @NonNull
@@ -28,7 +32,7 @@ public class HomePageSearchAdapter extends RecyclerView.Adapter<HomePageSearchAd
     public HomePageSearchAdapter.HomePageSearchViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.homepage_search_item_view, parent, false);
-        return new HomePageSearchAdapter.HomePageSearchViewHolder(view);
+        return new HomePageSearchAdapter.HomePageSearchViewHolder(view, recyclerViewInterface);
     }
 
     @Override
@@ -45,10 +49,25 @@ public class HomePageSearchAdapter extends RecyclerView.Adapter<HomePageSearchAd
 
         TextView username;
 
-        public HomePageSearchViewHolder(@NonNull View itemView) {
+        public HomePageSearchViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
 
             username = itemView.findViewById(R.id.search_res_username);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View view) {
+                    if (recyclerViewInterface != null) {
+                        int position = getAdapterPosition();
+
+                        if (position != RecyclerView.NO_POSITION){
+                            recyclerViewInterface.onClickRecyclerItem(position);
+                        }
+
+                    }
+                }
+            });
 
         }
     }
