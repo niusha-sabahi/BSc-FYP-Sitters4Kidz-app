@@ -55,27 +55,30 @@ public class SignUpPage extends AppCompatActivity {
                     showToast("some information hasn't been entered, please try again");
                 } else {
 
-                    // Retrieve data for the document by the name of the username entered, in the 'users' collection.
+                    // Retrieve data for the document by the name of the username entered, in the
+                    // 'users' collection.
                     DocumentReference doc_ref = db.collection("users")
                             .document(username);
                     doc_ref.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 
-                            // Check if the username the user has chosen, has already been taken, and if so,
+                            // Check if the username the user has chosen, has already been taken,
+                            // and if so,
                             // ask them to pick a different one.
                             if (task.getResult().exists()) {
                                 showToast("an account with this username already exists :(, " +
                                         "please try a different one");
                             } else {
 
-                                // Checks if the password and its confirmation entered match before adding
-                                // it to the database as the user's password.
+                                // Checks if the password and its confirmation entered match before
+                                // adding it to the database as the user's password.
                                 if (password.equals(conf_password)) {
 
                                     // Checks if the length of the username, password and city/town
                                     // name entered are in the right range, and that the username
-                                    // contains no empty spaces, and city/town name only includes letters.
+                                    // contains no empty spaces, and city/town name only includes
+                                    // letters.
                                     if (3 <= username.length() && username.length() <= 15
                                             && !username.contains(" ")) {
 
@@ -86,9 +89,11 @@ public class SignUpPage extends AppCompatActivity {
 
                                                 // Get the user type selected by the user from the
                                                 // radio buttons
-                                                int rad_ID = rgroup_usertype.getCheckedRadioButtonId();
+                                                int rad_ID = rgroup_usertype
+                                                        .getCheckedRadioButtonId();
                                                 RadioButton rbutton_usertype = findViewById(rad_ID);
-                                                String user_type = rbutton_usertype.getText().toString();
+                                                String user_type = rbutton_usertype.getText()
+                                                        .toString();
 
                                                 if (user_type.equals("Child-carer")) {
                                                     user_type = "childcarer";
@@ -96,9 +101,10 @@ public class SignUpPage extends AppCompatActivity {
                                                     user_type = "parent";
                                                 }
 
-                                                // Takes the user to the next page, which is different for
-                                                // parent and child-carer users, where they will enter
-                                                // further details.
+                                                // Takes the user to the next page, which is
+                                                // different for parent and child-carer users, where
+                                                // they will enter further details. The data entered
+                                                // in this page is also passed on to the next page.
                                                 Intent intent;
                                                 if (user_type.equals("parent")) {
                                                     intent = new Intent(SignUpPage.this,
@@ -106,7 +112,8 @@ public class SignUpPage extends AppCompatActivity {
                                                     intent.putExtra("USERNAME", username);
                                                     intent.putExtra("PASSWORD", password);
                                                     intent.putExtra("USER_TYPE", user_type);
-                                                    intent.putExtra("CITY", city.toLowerCase());
+                                                    intent.putExtra("CITY", city
+                                                            .toLowerCase());
                                                 } else {
                                                     intent = new Intent(SignUpPage.this,
                                                             ChildcarerHomePage.class);
@@ -115,15 +122,15 @@ public class SignUpPage extends AppCompatActivity {
 
                                             } else {
                                                 showToast("the city/town name is invalid, " +
-                                                        "please enter one between the range of 2-30 " +
-                                                        "characters, and one which only includes " +
-                                                        "characters a-z and A-Z");
+                                                        "please enter one between the range of " +
+                                                        "2-30 characters, and one which only " +
+                                                        "includes characters a-z and A-Z");
                                             }
 
                                         } else {
-                                            showToast("the password is too short, or too long, " +
-                                                    "please enter one between the range of 8-16 " +
-                                                    "characters");
+                                            showToast("the password is too short, or too " +
+                                                    "long, please enter one between the range of " +
+                                                    "8-16 characters");
                                         }
                                     } else {
                                         showToast("the username is too short, or too long, " +

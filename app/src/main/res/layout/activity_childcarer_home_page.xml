@@ -145,7 +145,7 @@
         app:layout_constraintVertical_bias="0.545" />
 
     <EditText
-        android:id="@+id/age_lower_inp"
+        android:id="@+id/age1_inp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
@@ -172,7 +172,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/age_upper_inp"
+        android:id="@+id/age2_inp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
