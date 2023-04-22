@@ -56,6 +56,8 @@ public class ParentSignUpXtraPage extends AppCompatActivity {
                         child_age_int = Integer.parseInt(child_age);
                         ages.add(child_age_int);
 
+                        showToast("child's age has been added");
+
                     } else {
                         showToast("please enter a valid age");
                     }
@@ -63,7 +65,7 @@ public class ParentSignUpXtraPage extends AppCompatActivity {
             }
         });
 
-        // Execute this code when the 'Add' button is pressed.
+        // Execute this code when the 'Submit' button is pressed.
         Button submit_butt = (Button) findViewById(R.id.submit_sing_up_butt2);
         submit_butt.setOnClickListener(new View.OnClickListener() {
             @Override

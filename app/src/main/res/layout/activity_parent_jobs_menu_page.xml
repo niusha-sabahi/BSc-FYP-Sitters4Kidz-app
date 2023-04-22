@@ -7,52 +7,21 @@
     tools:context=".ParentJobsMenuPage">
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Past Job Logs"
+        android:id="@+id/new_job_post_butt"
+        android:layout_width="132dp"
+        android:layout_height="50dp"
+        android:background="#2EC4B6"
+        android:fontFamily="@font/asap"
+        android:text="New Job Post"
+        android:textColor="#14564F"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintHorizontal_bias="0.942"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.806" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Confirmed Jobs"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.607" />
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="My Job Posts"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.424" />
-
-    <Button
-        android:id="@+id/button8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="My Job Offers"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.248" />
+        app:layout_constraintVertical_bias="0.138" />
 
     <TextView
         android:id="@+id/textView2"
@@ -68,5 +37,50 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#2EC4B6"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/home_butt"
+        android:layout_width="64dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:background="#2EC4B6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/jobs_butt"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:srcCompat="@drawable/ic_home" />
+
+    <ImageButton
+        android:id="@+id/jobs_butt"
+        android:layout_width="64dp"
+        android:layout_height="70dp"
+        android:background="#2EC4B6"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_jobs" />
+
+    <ImageButton
+        android:id="@+id/messages_butt"
+        android:layout_width="64dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:background="#2EC4B6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.633"
+        app:layout_constraintStart_toEndOf="@+id/jobs_butt"
+        app:srcCompat="@drawable/ic_messages" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

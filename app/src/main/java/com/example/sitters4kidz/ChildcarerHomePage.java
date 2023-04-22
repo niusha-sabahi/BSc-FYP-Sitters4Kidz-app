@@ -35,7 +35,7 @@ public class ChildcarerHomePage extends AppCompatActivity implements RecyclerVie
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         // Get all inputs
-        EditText city_inp = (EditText) findViewById(R.id.city_inp);
+        EditText city_inp = (EditText) findViewById(R.id.city_inp2);
         EditText age1_inp = (EditText) findViewById(R.id.age1_inp);
         EditText age2_inp = (EditText) findViewById(R.id.age2_inp);
 

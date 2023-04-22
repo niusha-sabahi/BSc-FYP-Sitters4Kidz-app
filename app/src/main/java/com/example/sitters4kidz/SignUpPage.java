@@ -18,9 +18,6 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class SignUpPage extends AppCompatActivity {
 
     @Override
@@ -116,7 +113,12 @@ public class SignUpPage extends AppCompatActivity {
                                                             .toLowerCase());
                                                 } else {
                                                     intent = new Intent(SignUpPage.this,
-                                                            ChildcarerHomePage.class);
+                                                            ChildcarerSignUpXtraPage.class);
+                                                    intent.putExtra("USERNAME", username);
+                                                    intent.putExtra("PASSWORD", password);
+                                                    intent.putExtra("USER_TYPE", user_type);
+                                                    intent.putExtra("CITY", city
+                                                            .toLowerCase());
                                                 }
                                                 startActivity(intent);
 
