@@ -31,6 +31,8 @@ public class ParentSignUpXtraPage extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         EditText child_age_inp = (EditText) findViewById(R.id.child_age_inp);
+        EditText email_add_inp = (EditText) findViewById(R.id.email_add_inp);
+
         ArrayList<Integer> ages = new ArrayList<>();
         // Grab the data entered by the previous activity.
         String username = getIntent().getStringExtra("USERNAME");
@@ -71,11 +73,13 @@ public class ParentSignUpXtraPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                String email_add = email_add_inp.getText().toString();
+
                 // Check that the ages array is not empty, and so that at least one age has been
                 // entered.
-                if (ages.isEmpty()){
-                    showToast("no ages have been entered, please enter at least one to " +
-                            "continue");
+                if (ages.isEmpty() | email_add.isEmpty()){
+                    showToast("some information is missing, please enter at least one age " +
+                            "and an email address to continue");
                 } else {
 
                     // creates and adds a new Document to the 'users' Collection,
@@ -85,6 +89,7 @@ public class ParentSignUpXtraPage extends AppCompatActivity {
                     user.put("user_type", user_type);
                     user.put("city", city);
                     user.put("children", ages);
+                    user.put("email", email_add);
                     db.collection("users").document(username)
                             .set(user);
 
@@ -92,6 +97,7 @@ public class ParentSignUpXtraPage extends AppCompatActivity {
                     Intent intent;
                     intent = new Intent(ParentSignUpXtraPage.this,
                             ParentHomePage.class);
+                    intent.putExtra("USERNAME", username);
                     startActivity(intent);
 
                 }
@@ -101,6 +107,6 @@ public class ParentSignUpXtraPage extends AppCompatActivity {
 
     // A function for generating Toasts. To simplify code, and reduce repetition.
     private void showToast(String text){
-        Toast.makeText(ParentSignUpXtraPage.this, text, Toast.LENGTH_SHORT).show();
+        Toast.makeText(ParentSignUpXtraPage.this, text, Toast.LENGTH_LONG).show();
     }
 }

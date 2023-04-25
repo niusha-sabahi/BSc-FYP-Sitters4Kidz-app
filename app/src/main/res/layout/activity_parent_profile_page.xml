@@ -4,19 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ParentProfilePage">
+    tools:context=".ParentProfilePage"
+    android:background="#FFFFFF">
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="216dp"
         android:background="#2EC4B6"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/back_butt"
         android:layout_width="59dp"
         android:layout_height="57dp"
         android:layout_marginStart="16dp"
@@ -39,30 +41,15 @@
         app:layout_constraintBottom_toBottomOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toEndOf="@+id/imageButton"
+        app:layout_constraintStart_toEndOf="@+id/back_butt"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.094" />
-
-    <TextView
-        android:id="@+id/num_of_children"
-        android:layout_width="143dp"
-        android:layout_height="38dp"
-        android:fontFamily="@font/asap"
-        android:text="x kids,"
-        android:textColor="#14564F"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/textView4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.124"
-        app:layout_constraintStart_toEndOf="@+id/imageButton"
-        app:layout_constraintTop_toBottomOf="@+id/parent_username"
-        app:layout_constraintVertical_bias="0.094" />
+        app:layout_constraintVertical_bias="0.158" />
 
     <TextView
         android:id="@+id/child_ages"
-        android:layout_width="286dp"
-        android:layout_height="81dp"
+        android:layout_width="279dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="40dp"
         android:fontFamily="@font/asap"
         android:text="2, 3, 5 year's old"
         android:textColor="#14564F"
@@ -70,21 +57,33 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.48"
-        app:layout_constraintStart_toEndOf="@+id/imageButton"
-        app:layout_constraintTop_toBottomOf="@+id/num_of_children"
-        app:layout_constraintVertical_bias="0.458" />
+        app:layout_constraintHorizontal_bias="0.421"
+        app:layout_constraintStart_toEndOf="@+id/back_butt"
+        app:layout_constraintTop_toBottomOf="@+id/parent_username"
+        app:layout_constraintVertical_bias="0.421" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/parent_profile_recyclerview"
-        android:layout_width="409dp"
-        android:layout_height="513dp"
+        android:id="@+id/job_posts_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_marginTop="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="254dp"
+        android:layout_height="28dp"
+        android:fontFamily="@font/asap"
+        android:text="email@gmail.com"
+        android:textColor="#14564F"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.63"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/child_ages"
+        app:layout_constraintVertical_bias="0.529" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

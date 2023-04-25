@@ -68,6 +68,6 @@ public class ChildcarerSignUpXtraPage extends AppCompatActivity {
 
     // A function for generating Toasts. To simplify code, and reduce repetition.
     private void showToast(String text){
-        Toast.makeText(ChildcarerSignUpXtraPage.this, text, Toast.LENGTH_SHORT).show();
+        Toast.makeText(ChildcarerSignUpXtraPage.this, text, Toast.LENGTH_LONG).show();
     }
 }

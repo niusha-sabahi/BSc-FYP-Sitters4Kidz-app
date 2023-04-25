@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="415dp"
+        android:layout_width="match_parent"
         android:layout_height="74dp"
         android:background="#14564F"
         android:fontFamily="@font/asap"

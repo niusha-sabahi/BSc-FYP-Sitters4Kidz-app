@@ -27,7 +27,7 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="417dp"
+        android:layout_width="match_parent"
         android:layout_height="238dp"
         android:background="#2EC4B6"
         android:text=""
@@ -189,7 +189,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/childcarer_homepage_search_recyclerview"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="421dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"

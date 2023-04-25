@@ -21,6 +21,8 @@ public class ParentHomePage extends AppCompatActivity {
         EditText payl_inp = (EditText) findViewById(R.id.pay_lower_inp);
         EditText payu_inp = (EditText) findViewById(R.id.pay_upper_inp);
 
+        String username = getIntent().getStringExtra("USERNAME");
+
         // Execute this code when the 'Search' button is pressed.
         Button search_butt = (Button) findViewById(R.id.search_butt);
         search_butt.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +56,7 @@ public class ParentHomePage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ParentHomePage.this,
                         ParentJobsMenuPage.class);
+                intent.putExtra("USERNAME", username);
                 startActivity(intent);
             }
         });

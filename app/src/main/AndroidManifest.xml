@@ -20,9 +20,6 @@
             android:name=".ChildcarerSignUpXtraPage"
             android:exported="false" />
         <activity
-            android:name=".ChildcarerProfilePage"
-            android:exported="false" />
-        <activity
             android:name=".ParentSignUpXtraPage"
             android:exported="false" />
         <activity

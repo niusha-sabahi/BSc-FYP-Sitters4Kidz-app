@@ -6,7 +6,7 @@
         <entry key="..\:/Niusha/CompSci/Part_C/FYP/Program/Sitters4Kidz/app/src/main/res/layout/activity_log_in_page.xml" value="0.25416666666666665" />
         <entry key="..\:/Niusha/FYP/Program/Sitters4Kidz/app/src/main/res/drawable/box.xml" value="0.248" />
         <entry key="..\:/Niusha/FYP/Program/Sitters4Kidz/app/src/main/res/font/arvo.xml" value="0.284375" />
-        <entry key="..\:/Niusha/FYP/Program/Sitters4Kidz/app/src/main/res/layout/activity_childcarer_home_page.xml" value="0.264" />
+        <entry key="..\:/Niusha/FYP/Program/Sitters4Kidz/app/src/main/res/layout/activity_childcarer_home_page.xml" value="0.22592592592592592" />
         <entry key="..\:/Niusha/FYP/Program/Sitters4Kidz/app/src/main/res/layout/activity_childcarer_jobs_menu_page.xml" value="0.22780797101449277" />
         <entry key="..\:/Niusha/FYP/Program/Sitters4Kidz/app/src/main/res/layout/activity_childcarer_profile_page.xml" value="0.22871376811594202" />
         <entry key="..\:/Niusha/FYP/Program/Sitters4Kidz/app/src/main/res/layout/activity_childcarer_sign_up_xtra_page.xml" value="0.22871376811594202" />
@@ -14,7 +14,7 @@
         <entry key="..\:/Niusha/FYP/Program/Sitters4Kidz/app/src/main/res/layout/activity_log_in_page.xml" value="0.264" />
         <entry key="..\:/Niusha/FYP/Program/Sitters4Kidz/app/src/main/res/layout/activity_main_menu_page.xml" value="0.264" />
         <entry key="..\:/Niusha/FYP/Program/Sitters4Kidz/app/src/main/res/layout/activity_messages_menu.xml" value="0.22780797101449277" />
-        <entry key="..\:/Niusha/FYP/Program/Sitters4Kidz/app/src/main/res/layout/activity_new_job_post_page.xml" value="0.22871376811594202" />
+        <entry key="..\:/Niusha/FYP/Program/Sitters4Kidz/app/src/main/res/layout/activity_new_job_post_page.xml" value="0.22592592592592592" />
         <entry key="..\:/Niusha/FYP/Program/Sitters4Kidz/app/src/main/res/layout/activity_parent_home_page.xml" value="0.264" />
         <entry key="..\:/Niusha/FYP/Program/Sitters4Kidz/app/src/main/res/layout/activity_parent_jobs_menu_page.xml" value="0.22780797101449277" />
         <entry key="..\:/Niusha/FYP/Program/Sitters4Kidz/app/src/main/res/layout/activity_parent_profile_page.xml" value="0.22871376811594202" />
@@ -23,6 +23,7 @@
         <entry key="..\:/Niusha/FYP/Program/Sitters4Kidz/app/src/main/res/layout/activity_sign_up_page.xml" value="0.22780797101449277" />
         <entry key="..\:/Niusha/FYP/Program/Sitters4Kidz/app/src/main/res/layout/childcarer_search_item_view.xml" value="0.22871376811594202" />
         <entry key="..\:/Niusha/FYP/Program/Sitters4Kidz/app/src/main/res/layout/homepage_search_item_view.xml" value="0.22871376811594202" />
+        <entry key="..\:/Niusha/FYP/Program/Sitters4Kidz/app/src/main/res/layout/job_posts_item_view.xml" value="0.22592592592592592" />
       </map>
     </option>
   </component>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".NewJobPostPage">
 
     <Button
@@ -24,7 +25,7 @@
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="415dp"
+        android:layout_width="match_parent"
         android:layout_height="74dp"
         android:background="#14564F"
         android:fontFamily="@font/asap"
@@ -37,39 +38,107 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/job_text2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
-        android:fontFamily="@font/asap"
-        android:text="job date"
-        android:textColor="#14564F"
-        android:textSize="27sp"
-        android:textStyle="bold"
-        android:typeface="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.169"
+    <EditText
+        android:id="@+id/start_hour_inp"
+        android:layout_width="83dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textColor="#3B3B3B"
+        app:layout_constraintEnd_toStartOf="@+id/colon_text"
+        app:layout_constraintHorizontal_bias="0.663"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/job_text3" />
+
+    <EditText
+        android:id="@+id/start_min_inp"
+        android:layout_width="83dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="84dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textColor="#3B3B3B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/job_text3" />
 
     <TextView
         android:id="@+id/job_text3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="56dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/asap"
-        android:text="job start time"
+        android:text="job start time (24hr time)"
         android:textColor="#14564F"
         android:textSize="27sp"
         android:textStyle="bold"
         android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.19"
+        app:layout_constraintHorizontal_bias="0.474"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date_inp" />
+        app:layout_constraintTop_toBottomOf="@+id/date_inp1" />
+
+    <TextView
+        android:id="@+id/colon_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/asap"
+        android:text=" : "
+        android:textColor="#14564F"
+        android:textSize="27sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintEnd_toStartOf="@+id/start_min_inp"
+        app:layout_constraintHorizontal_bias="0.885"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/job_text3" />
+
+    <TextView
+        android:id="@+id/colon_text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="28dp"
+        android:fontFamily="@font/asap"
+        android:text=" : "
+        android:textColor="#14564F"
+        android:textSize="27sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintEnd_toStartOf="@+id/duration_min_inp"
+        app:layout_constraintTop_toBottomOf="@+id/job_text" />
+
+    <EditText
+        android:id="@+id/duration_hour_inp"
+        android:layout_width="83dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textColor="#3B3B3B"
+        app:layout_constraintEnd_toStartOf="@+id/colon_text2"
+        app:layout_constraintHorizontal_bias="0.682"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/job_text" />
+
+    <EditText
+        android:id="@+id/duration_min_inp"
+        android:layout_width="83dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="84dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textColor="#3B3B3B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/job_text" />
 
     <TextView
         android:id="@+id/job_text"
@@ -89,98 +158,89 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/start_hour_inp" />
 
-    <EditText
-        android:id="@+id/date_inp"
+    <TextView
+        android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="8dp"
-        android:width="300sp"
-        android:ems="7"
-        android:inputType="textPersonName"
-        android:textColor="#3B3B3B"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/asap"
+        android:text="/"
+        android:textColor="#14564F"
+        android:textSize="27sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintEnd_toStartOf="@+id/date_inp2"
+        app:layout_constraintStart_toEndOf="@+id/date_inp1"
         app:layout_constraintTop_toBottomOf="@+id/job_text2" />
 
     <EditText
-        android:id="@+id/start_hour_inp"
-        android:layout_width="131dp"
+        android:id="@+id/date_inp2"
+        android:layout_width="70dp"
         android:layout_height="45dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="4dp"
+        android:width="300sp"
+        android:ems="7"
         android:inputType="number"
-        app:layout_constraintEnd_toStartOf="@+id/colon_text"
-        app:layout_constraintHorizontal_bias="0.868"
+        android:textColor="#3B3B3B"
+        app:layout_constraintEnd_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/job_text2" />
+
+    <EditText
+        android:id="@+id/date_inp1"
+        android:layout_width="70dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="28dp"
+        android:width="300sp"
+        android:ems="7"
+        android:inputType="number"
+        android:textColor="#3B3B3B"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/job_text3" />
+        app:layout_constraintTop_toBottomOf="@+id/job_text2" />
 
     <TextView
-        android:id="@+id/colon_text"
+        android:id="@+id/job_text2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="100dp"
         android:fontFamily="@font/asap"
-        android:text=" : "
+        android:text="job date"
         android:textColor="#14564F"
         android:textSize="27sp"
         android:textStyle="bold"
         android:typeface="normal"
-        app:layout_constraintEnd_toStartOf="@+id/start_min_inp"
-        app:layout_constraintHorizontal_bias="0.941"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/job_text3" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <EditText
+        android:id="@+id/date_inp3"
+        android:layout_width="70dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="64dp"
+        android:width="300sp"
+        android:ems="7"
+        android:inputType="number"
+        android:textColor="#3B3B3B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/job_text2" />
 
     <TextView
-        android:id="@+id/colon_text2"
+        android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="12dp"
         android:fontFamily="@font/asap"
-        android:text=" : "
+        android:text="/"
         android:textColor="#14564F"
         android:textSize="27sp"
         android:textStyle="bold"
         android:typeface="normal"
-        app:layout_constraintEnd_toStartOf="@+id/duration_min_inp"
-        app:layout_constraintTop_toBottomOf="@+id/job_text" />
-
-    <EditText
-        android:id="@+id/start_min_inp"
-        android:layout_width="131dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="56dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/job_text3" />
-
-    <EditText
-        android:id="@+id/duration_min_inp"
-        android:layout_width="131dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="56dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/job_text" />
-
-    <EditText
-        android:id="@+id/duration_hour_inp"
-        android:layout_width="131dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintEnd_toStartOf="@+id/colon_text2"
-        app:layout_constraintHorizontal_bias="0.82"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/job_text" />
+        app:layout_constraintEnd_toStartOf="@+id/date_inp3"
+        app:layout_constraintTop_toBottomOf="@+id/job_text2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingTop="15dp"
+    android:paddingStart="40dp"
+    android:paddingBottom="15dp">
+
+
+    <TextView
+        android:id="@+id/job_post_text"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="#CBF3F0"
+        android:fontFamily="@font/asap"
+        android:paddingBottom="20dp"
+        android:textAlignment="center"
+        android:textColor="#14564F"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        tools:text="JOB POST" />
+
+    <TextView
+        android:id="@+id/post_date"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/job_post_text"
+        android:background="#CBF3F0"
+        android:fontFamily="@font/asap"
+        android:paddingStart="10dp"
+        android:paddingBottom="20dp"
+        android:textColor="#14564F"
+        android:textSize="18sp"
+        android:typeface="normal"
+        tools:text=" dd / mm / yy " />
+
+    <TextView
+        android:id="@+id/post_start"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/post_date"
+        android:background="#CBF3F0"
+        android:fontFamily="@font/asap"
+        android:paddingBottom="20dp"
+        android:textAlignment="center"
+        android:textColor="#14564F"
+        android:textSize="16sp"
+        android:typeface="normal"
+        tools:text=" start time " />
+
+    <TextView
+        android:id="@+id/post_duration"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/post_start"
+        android:background="#CBF3F0"
+        android:fontFamily="@font/asap"
+        android:textAlignment="center"
+        android:textColor="#14564F"
+        android:textSize="16sp"
+        android:typeface="normal"
+        tools:text=" duration time " />
+
+</RelativeLayout>

@@ -10,12 +10,12 @@ import android.widget.ImageButton;
 
 public class ParentJobsMenuPage extends AppCompatActivity {
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parent_jobs_menu_page);
+
+        String username = getIntent().getStringExtra("USERNAME");
 
         // Execute this code when the 'New Job Post' button is pressed,
         // takes user to the parent's version of the 'Search' page.
@@ -25,6 +25,7 @@ public class ParentJobsMenuPage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ParentJobsMenuPage.this,
                         NewJobPostPage.class);
+                intent.putExtra("USERNAME", username);
                 startActivity(intent);
             }
         });

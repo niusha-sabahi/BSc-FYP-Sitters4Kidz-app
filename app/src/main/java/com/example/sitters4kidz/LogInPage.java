@@ -83,6 +83,7 @@ public class LogInPage extends AppCompatActivity {
                                             intent = new Intent(LogInPage.this,
                                                     ChildcarerHomePage.class);
                                         }
+                                        intent.putExtra("USERNAME", username);
                                         startActivity(intent);
                                     } else {
                                         showToast("the wrong password was entered, " +
@@ -147,7 +148,7 @@ public class LogInPage extends AppCompatActivity {
 
     // A function for generating Toasts. To simplify code, and reduce repetition.
     private void showToast(String text){
-        Toast.makeText(LogInPage.this, text, Toast.LENGTH_SHORT).show();
+        Toast.makeText(LogInPage.this, text, Toast.LENGTH_LONG).show();
     }
 
 }

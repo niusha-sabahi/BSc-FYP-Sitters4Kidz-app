@@ -39,6 +39,7 @@ public class ChildcarerHomePage extends AppCompatActivity implements RecyclerVie
         EditText age1_inp = (EditText) findViewById(R.id.age1_inp);
         EditText age2_inp = (EditText) findViewById(R.id.age2_inp);
 
+        // Sets up the RecyclerView for when the results are displayed
         RecyclerView search_results = findViewById(R.id.childcarer_homepage_search_recyclerview);
         search_results.setLayoutManager(new LinearLayoutManager(this));
         HomePageSearchAdapter adapter = new HomePageSearchAdapter(getApplicationContext(),
@@ -81,8 +82,7 @@ public class ChildcarerHomePage extends AppCompatActivity implements RecyclerVie
                                         items.clear();
                                         for (QueryDocumentSnapshot document : task.getResult()) {
                                             q_username[0] = document.getId();
-                                            items.add(new HomePageSearchItem("parent user " +
-                                                    q_username[0]));
+                                            items.add(new HomePageSearchItem(q_username[0]));
                                         }
 
                                     }
@@ -132,8 +132,7 @@ public class ChildcarerHomePage extends AppCompatActivity implements RecyclerVie
                                             items.clear();
                                             for (QueryDocumentSnapshot document : task.getResult()) {
                                                 q_username[0] = document.getId();
-                                                items.add(new HomePageSearchItem("parent user " +
-                                                        q_username[0]));
+                                                items.add(new HomePageSearchItem(q_username[0]));
                                             }
 
                                         }
@@ -208,7 +207,7 @@ public class ChildcarerHomePage extends AppCompatActivity implements RecyclerVie
 
     // A function for generating Toasts. To simplify code, and reduce repetition.
     private void showToast(String text){
-        Toast.makeText(ChildcarerHomePage.this, text, Toast.LENGTH_SHORT).show();
+        Toast.makeText(ChildcarerHomePage.this, text, Toast.LENGTH_LONG).show();
     }
 
 }
