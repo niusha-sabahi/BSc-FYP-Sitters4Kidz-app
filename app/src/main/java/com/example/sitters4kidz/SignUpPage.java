@@ -41,10 +41,10 @@ public class SignUpPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String username = username_inp.getText().toString();
+                String username = username_inp.getText().toString().trim();
                 String password = password_inp.getText().toString();
                 String conf_password = confirm_password_inp.getText().toString();
-                String city = city_inp.getText().toString();
+                String city = city_inp.getText().toString().trim();
 
                 // Check that all fields have been entered
                 if (username.isEmpty() | password.isEmpty() | conf_password.isEmpty()
@@ -106,20 +106,15 @@ public class SignUpPage extends AppCompatActivity {
                                                 if (user_type.equals("parent")) {
                                                     intent = new Intent(SignUpPage.this,
                                                             ParentSignUpXtraPage.class);
-                                                    intent.putExtra("USERNAME", username);
-                                                    intent.putExtra("PASSWORD", password);
-                                                    intent.putExtra("USER_TYPE", user_type);
-                                                    intent.putExtra("CITY", city
-                                                            .toLowerCase());
                                                 } else {
                                                     intent = new Intent(SignUpPage.this,
                                                             ChildcarerSignUpXtraPage.class);
-                                                    intent.putExtra("USERNAME", username);
-                                                    intent.putExtra("PASSWORD", password);
-                                                    intent.putExtra("USER_TYPE", user_type);
-                                                    intent.putExtra("CITY", city
-                                                            .toLowerCase());
                                                 }
+                                                intent.putExtra("USERNAME", username);
+                                                intent.putExtra("PASSWORD", password);
+                                                intent.putExtra("USER_TYPE", user_type);
+                                                intent.putExtra("CITY", city
+                                                        .toLowerCase());
                                                 startActivity(intent);
 
                                             } else {
@@ -149,6 +144,18 @@ public class SignUpPage extends AppCompatActivity {
                         }
                     });
                 }
+            }
+        });
+
+        // Execute this code when the 'Back' button is pressed.
+        // Takes the user back to the log-in page.
+        Button back_butt = (Button) findViewById(R.id.back_butt);
+        back_butt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SignUpPage.this,
+                            LogInPage.class);
+                startActivity(intent);
             }
         });
 

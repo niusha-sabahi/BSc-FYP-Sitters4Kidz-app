@@ -22,6 +22,7 @@ public class NewJobPostPage extends AppCompatActivity {
         setContentView(R.layout.activity_new_job_post_page);
 
         String username = getIntent().getStringExtra("USERNAME");
+        String user_type = getIntent().getStringExtra("USER_TYPE");
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -40,14 +41,14 @@ public class NewJobPostPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String date1 = date_inp1.getText().toString();
-                String date2 = date_inp2.getText().toString();
-                String date3 = date_inp3.getText().toString();
+                String date1 = date_inp1.getText().toString().trim();
+                String date2 = date_inp2.getText().toString().trim();
+                String date3 = date_inp3.getText().toString().trim();
 
-                String start_hour = start_hour_inp.getText().toString();
-                String start_min = start_min_inp.getText().toString();
-                String duration_hour = duration_hour_inp.getText().toString();
-                String duration_min = duration_min_inp.getText().toString();
+                String start_hour = start_hour_inp.getText().toString().trim();
+                String start_min = start_min_inp.getText().toString().trim();
+                String duration_hour = duration_hour_inp.getText().toString().trim();
+                String duration_min = duration_min_inp.getText().toString().trim();
 
                 // Mak sure that the inputs are valid and if not, alert the user that the input
                 // cannot be accepted and how they should change it.
@@ -88,11 +89,27 @@ public class NewJobPostPage extends AppCompatActivity {
                     intent = new Intent(NewJobPostPage.this,
                             ParentJobsMenuPage.class);
                     intent.putExtra("USERNAME", username);
+                    intent.putExtra("USER_TYPE", user_type);
                     startActivity(intent);
 
                 }
             }
         });
+
+        // Execute this code when the 'Back' button is pressed.
+        // Takes the user back to the previous page, the parent's version of the 'Jobs Menu' page.
+        Button back_butt = (Button) findViewById(R.id.back_butt);
+        back_butt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NewJobPostPage.this,
+                        ParentJobsMenuPage.class);
+                intent.putExtra("USERNAME", username);
+                intent.putExtra("USER_TYPE", user_type);
+                startActivity(intent);
+            }
+        });
+
     }
 
     // A function for generating Toasts. To simplify code, and reduce repetition.

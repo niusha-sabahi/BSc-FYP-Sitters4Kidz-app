@@ -22,6 +22,7 @@ public class ParentHomePage extends AppCompatActivity {
         EditText payu_inp = (EditText) findViewById(R.id.pay_upper_inp);
 
         String username = getIntent().getStringExtra("USERNAME");
+        String user_type = getIntent().getStringExtra("USER_TYPE");
 
         // Execute this code when the 'Search' button is pressed.
         Button search_butt = (Button) findViewById(R.id.search_butt);
@@ -29,9 +30,11 @@ public class ParentHomePage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String city = city_inp.getText().toString();
-                String payl = payl_inp.getText().toString();
-                String payu = payu_inp.getText().toString();
+                String city = city_inp.getText().toString().trim();
+                String payl = payl_inp.getText().toString().trim();
+                String payu = payu_inp.getText().toString().trim();
+
+
 
             }
         });
@@ -44,6 +47,8 @@ public class ParentHomePage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ParentHomePage.this,
                         SettingsPage.class);
+                intent.putExtra("USERNAME", username);
+                intent.putExtra("USER_TYPE", user_type);
                 startActivity(intent);
             }
         });
@@ -57,6 +62,7 @@ public class ParentHomePage extends AppCompatActivity {
                 Intent intent = new Intent(ParentHomePage.this,
                         ParentJobsMenuPage.class);
                 intent.putExtra("USERNAME", username);
+                intent.putExtra("USER_TYPE", user_type);
                 startActivity(intent);
             }
         });
@@ -69,6 +75,8 @@ public class ParentHomePage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ParentHomePage.this,
                         MessagesMenuPage.class);
+                intent.putExtra("USERNAME", username);
+                intent.putExtra("USER_TYPE", user_type);
                 startActivity(intent);
             }
         });

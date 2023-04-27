@@ -24,6 +24,7 @@ public class ChildcarerSignUpXtraPage extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         EditText charge_rate_inp = (EditText) findViewById(R.id.charge_rate_inp);
+        EditText email_inp = (EditText) findViewById(R.id.email_inp_c);
 
         // Grab the data entered by the previous activity.
         String username = getIntent().getStringExtra("USERNAME");
@@ -39,9 +40,10 @@ public class ChildcarerSignUpXtraPage extends AppCompatActivity {
 
                 // Check that the ages array is not empty, and so that at least one age has been
                 // entered.
-                String charge_rate = charge_rate_inp.getText().toString();
-                if (charge_rate.isEmpty()){
-                    showToast("please enter a value for how much you charge per hour");
+                String charge_rate = charge_rate_inp.getText().toString().trim();
+                String email = email_inp.getText().toString().trim();
+                if (charge_rate.isEmpty() | email.isEmpty()){
+                    showToast("some information is missing");
                 } else {
 
                     // creates and adds a new Document to the 'users' Collection,
@@ -51,16 +53,32 @@ public class ChildcarerSignUpXtraPage extends AppCompatActivity {
                     user.put("user_type", user_type);
                     user.put("city", city);
                     user.put("pay_rate", charge_rate);
+                    user.put("email", email);
                     db.collection("users").document(username)
                             .set(user);
+
+                    showToast("new account created!");
 
                     // Take user to the next page, the 'Childcarer Home Page'.
                     Intent intent;
                     intent = new Intent(ChildcarerSignUpXtraPage.this,
                             ChildcarerHomePage.class);
+                    intent.putExtra("USERNAME", username);
                     startActivity(intent);
 
                 }
+            }
+        });
+
+        // Execute this code when the 'Back' button is pressed.
+        // Takes the user back to the previous page, the 'Sign-up' page.
+        Button back_butt = (Button) findViewById(R.id.back_butt);
+        back_butt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ChildcarerSignUpXtraPage.this,
+                        SignUpPage.class);
+                startActivity(intent);
             }
         });
 

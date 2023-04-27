@@ -27,6 +27,9 @@ public class ChildcarerHomePage extends AppCompatActivity implements RecyclerVie
 
     ArrayList<HomePageSearchItem> items = new ArrayList<>();
 
+    String username = getIntent().getStringExtra("USERNAME");
+    String user_type = getIntent().getStringExtra("USER_TYPE");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,9 +54,9 @@ public class ChildcarerHomePage extends AppCompatActivity implements RecyclerVie
             @Override
             public void onClick(View view) {
 
-                String city = city_inp.getText().toString().toLowerCase();
-                String age1 = age1_inp.getText().toString();
-                String age2 = age2_inp.getText().toString();
+                String city = city_inp.getText().toString().toLowerCase().trim();
+                String age1 = age1_inp.getText().toString().trim();
+                String age2 = age2_inp.getText().toString().trim();
 
                 boolean is_city_valid = 2 <= city.length() && city.length() <= 30
                         && city.matches("^[a-zA-Z]*$");
@@ -164,6 +167,8 @@ public class ChildcarerHomePage extends AppCompatActivity implements RecyclerVie
             public void onClick(View view) {
                 Intent intent = new Intent(ChildcarerHomePage.this,
                         SettingsPage.class);
+                intent.putExtra("USERNAME", username);
+                intent.putExtra("USER_TYPE", user_type);
                 startActivity(intent);
             }
         });
@@ -176,6 +181,8 @@ public class ChildcarerHomePage extends AppCompatActivity implements RecyclerVie
             public void onClick(View view) {
                 Intent intent = new Intent(ChildcarerHomePage.this,
                         ChildcarerJobsMenuPage.class);
+                intent.putExtra("USERNAME", username);
+                intent.putExtra("USER_TYPE", user_type);
                 startActivity(intent);
             }
         });
@@ -188,6 +195,8 @@ public class ChildcarerHomePage extends AppCompatActivity implements RecyclerVie
             public void onClick(View view) {
                 Intent intent = new Intent(ChildcarerHomePage.this,
                         MessagesMenuPage.class);
+                intent.putExtra("USERNAME", username);
+                intent.putExtra("USER_TYPE", user_type);
                 startActivity(intent);
             }
         });
@@ -201,6 +210,8 @@ public class ChildcarerHomePage extends AppCompatActivity implements RecyclerVie
 
         Intent intent = new Intent(ChildcarerHomePage.this, ParentProfilePage.class);
         intent.putExtra("PARENT_USERNAME", items.get(position).getUsername());
+        intent.putExtra("USERNAME", username);
+        intent.putExtra("USER_TYPE", user_type);
         startActivity(intent);
 
     }

@@ -46,7 +46,7 @@ public class ParentSignUpXtraPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String child_age = child_age_inp.getText().toString();
+                String child_age = child_age_inp.getText().toString().trim();
                 Integer child_age_int;
 
                 // Check that the age input is not empty, and if not, adds it to the list of children ages.
@@ -73,7 +73,7 @@ public class ParentSignUpXtraPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String email_add = email_add_inp.getText().toString();
+                String email_add = email_add_inp.getText().toString().trim();
 
                 // Check that the ages array is not empty, and so that at least one age has been
                 // entered.
@@ -93,6 +93,8 @@ public class ParentSignUpXtraPage extends AppCompatActivity {
                     db.collection("users").document(username)
                             .set(user);
 
+                    showToast("new account created!");
+
                     // Take user to the next page, the 'Parent Home Page'.
                     Intent intent;
                     intent = new Intent(ParentSignUpXtraPage.this,
@@ -103,6 +105,19 @@ public class ParentSignUpXtraPage extends AppCompatActivity {
                 }
             }
         });
+
+        // Execute this code when the 'Back' button is pressed.
+        // Takes the user back to the previous page, the 'Sign-up' page.
+        Button back_butt = (Button) findViewById(R.id.back_butt);
+        back_butt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ParentSignUpXtraPage.this,
+                        SignUpPage.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     // A function for generating Toasts. To simplify code, and reduce repetition.

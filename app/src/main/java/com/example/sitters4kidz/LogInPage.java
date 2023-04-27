@@ -19,6 +19,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LogInPage extends AppCompatActivity {
 
+    //TODO: remove comments on this file if code not needed after testing
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,33 +49,32 @@ public class LogInPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String username = username_inp.getText().toString();
-                String password = password_inp.getText().toString();
+                String username = username_inp.getText().toString().trim();
+                String password = password_inp.getText().toString().trim();
 
                 if(username.isEmpty() | password.isEmpty()) {
                     showToast("some information hasn't been entered, please try again");
 
                 } else {
-                    // Retrieve data for the document by the name of the username entered, in the 'users' collection.
+                    // Retrieve data for the document by the name of the username entered, in the
+                    // 'users' collection.
                     DocumentReference doc_ref = db.collection("users")
                             .document(username);
                     doc_ref.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-
-                            // TODO: maybe remove the bulky success listener chekcs? or add them to others too?
-                            if (task.isSuccessful()) {
+                            //if (task.isSuccessful()) {
                                 DocumentSnapshot document = task.getResult();
-
                                 if (document.exists()) {
-                                    // If the document retrieval is successful and the document exists, load the 'password' field
-                                    // for that document into the 'actual_pass' variable. This stores the actual password linked
-                                    // to the username entered.
+                                    // If the document exists, load the 'password' field for that
+                                    // document into the 'actual_pass' variable. This stores the
+                                    // actual password linked to the username entered.
                                     String actual_pass = document.getData().get("password").toString();
                                     String user_type = document.getData().get("user_type").toString();
 
-                                    // If the password entered is the same as the expected password for the username entered,
-                                    // enter the 'Home' page, which is different for parent and child-carer users.
+                                    // If the password entered is the same as the expected password
+                                    // for the username entered, enter the 'Home' page, which is
+                                    // different for parent and child-carer users.
                                     if (password.equals(actual_pass)) {
                                         Intent intent;
                                         if (user_type.equals("parent")) {
@@ -84,6 +85,7 @@ public class LogInPage extends AppCompatActivity {
                                                     ChildcarerHomePage.class);
                                         }
                                         intent.putExtra("USERNAME", username);
+                                        intent.putExtra("USER_TYPE", user_type);
                                         startActivity(intent);
                                     } else {
                                         showToast("the wrong password was entered, " +
@@ -93,9 +95,9 @@ public class LogInPage extends AppCompatActivity {
                                     showToast("the wrong username was entered, " +
                                             "please try again :)");
                                 }
-                            } else {
-                                Log.e("ERROR: ", "get failed with ", task.getException());
-                            }
+                            //} else {
+                                //Log.e("ERROR: ", "get failed with ", task.getException());
+                            //}
                         }
                     });
                 }
@@ -123,7 +125,6 @@ public class LogInPage extends AppCompatActivity {
                 city.put("state", "CA");
                 city.put("country", "USA");
 
-                // TODO: if decided, add success listeners to all data additions to db.
                 db.collection("cities").document("LA")
                         .set(city)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {

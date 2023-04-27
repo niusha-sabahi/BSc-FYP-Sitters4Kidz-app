@@ -31,16 +31,15 @@ public class ParentProfilePage extends AppCompatActivity {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-
         ArrayList<JobPostsItem> items = new ArrayList<>();
-
         // Sets up the RecyclerView
         RecyclerView job_posts = findViewById(R.id.job_posts_recyclerview);
         JobPostsAdapter adapter = new JobPostsAdapter(getApplicationContext(), items);
-        //job_posts.setAdapter(adapter);
         job_posts.setLayoutManager(new LinearLayoutManager(this));
 
         String parent_username = getIntent().getStringExtra("PARENT_USERNAME");
+        String username = getIntent().getStringExtra("USERNAME");
+        String user_type = getIntent().getStringExtra("USER_TYPE");
 
         TextView parent_username_tv = findViewById(R.id.parent_username);
         TextView child_ages_tv = findViewById(R.id.child_ages);
@@ -79,12 +78,15 @@ public class ParentProfilePage extends AppCompatActivity {
                             // to the relevant EditText
                             StringBuilder sb = new StringBuilder();
                             sb.append(num_of_children_text[0]);
-                            sb.append(" kids: \n");
-
-                            for (Integer intValue : child_ages_int) {
-                                sb.append(intValue).append(", ");
+                            if(num_of_children == 1) {
+                                sb.append(" kid: \n");
+                            } else {
+                                sb.append(" kids: \n");
                             }
-
+                            for (int i=0; i < num_of_children-1; i++) {
+                                sb.append(child_ages_int.get(i)).append(", ");
+                            }
+                            sb.append(child_ages_int.get(num_of_children-1));
                             sb.append(" years old");
                             child_ages_text[0] = sb.toString();
                             child_ages_tv.setText(child_ages_text[0]);
@@ -105,7 +107,6 @@ public class ParentProfilePage extends AppCompatActivity {
 
                         // Adds the retrieved job posts into the RecyclerView
                         for (QueryDocumentSnapshot document : task.getResult()) {
-                            Log.e("////////////////////////////// RECYCLER VIEW ", "item found!");
 
                             StringBuilder sb2 = new StringBuilder();
                             Long date_dayL = (Long) document.get("date_day");
@@ -144,11 +145,6 @@ public class ParentProfilePage extends AppCompatActivity {
                             String duration_time = sb4.toString();
 
                             items.add(new JobPostsItem(date, start_time, duration_time));
-                            Log.e("//////////////////////////////// ", Integer.toString(items.size()));
-                            Log.e("//////////////////////////////// ", date);
-                            Log.e("//////////////////////////////// ", start_time);
-                            Log.e("//////////////////////////////// ", duration_time);
-
                             job_posts.setAdapter(adapter);
 
                         }
@@ -164,6 +160,8 @@ public class ParentProfilePage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ParentProfilePage.this,
                         ChildcarerHomePage.class);
+                intent.putExtra("USERNAME", username);
+                intent.putExtra("USER_TYPE", user_type);
                 startActivity(intent);
             }
         });
