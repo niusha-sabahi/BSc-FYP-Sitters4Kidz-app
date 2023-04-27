@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_margin="20dp"
+    android:background="@drawable/rounded_corners_textview"
+    android:paddingBottom="15dp">
 
     <TextView
         android:id="@+id/search_res_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#CBF3F0"
         android:fontFamily="@font/asap"
-        android:paddingStart="50dp"
-        android:paddingTop="20dp"
+        android:paddingTop="10dp"
+        android:paddingStart="10dp"
         android:paddingEnd="10dp"
-        android:paddingBottom="20dp"
+        android:paddingBottom="10dp"
         android:textColor="#14564F"
         android:textSize="18sp"
         android:textStyle="bold"

@@ -39,9 +39,11 @@
             android:exported="false" />
         <activity
             android:name=".ParentHomePage"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"
             android:exported="false" />
         <activity
             android:name=".ChildcarerHomePage"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"
             android:exported="false" />
         <activity
             android:name=".SignUpPage"

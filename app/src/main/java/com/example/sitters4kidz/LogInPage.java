@@ -19,8 +19,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LogInPage extends AppCompatActivity {
 
-    //TODO: remove comments on this file if code not needed after testing
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,58 +93,12 @@ public class LogInPage extends AppCompatActivity {
                                     showToast("the wrong username was entered, " +
                                             "please try again :)");
                                 }
-                            //} else {
-                                //Log.e("ERROR: ", "get failed with ", task.getException());
-                            //}
                         }
                     });
                 }
-
-                // Deletes a Document based on ID in a Collection
-                /*db.collection("cities").document("LA")
-                        .delete()
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                Log.d("S", "DocumentSnapshot successfully deleted!");
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Log.w("F", "Error deleting document", e);
-                            }
-                        });**
-
-                /*
-                // creates and adds a new Document to a Collection with a specific ID
-                Map<String, Object> city = new HashMap<>();
-                city.put("name", "Los Angeles");
-                city.put("state", "CA");
-                city.put("country", "USA");
-
-                db.collection("cities").document("LA")
-                        .set(city)
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                Log.d("S", "DocumentSnapshot successfully written!");
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Log.w("F", "Error writing document", e);
-                            }
-                        });*/
-
             }
         });
-
-
-
     }
-
     // A function for generating Toasts. To simplify code, and reduce repetition.
     private void showToast(String text){
         Toast.makeText(LogInPage.this, text, Toast.LENGTH_LONG).show();

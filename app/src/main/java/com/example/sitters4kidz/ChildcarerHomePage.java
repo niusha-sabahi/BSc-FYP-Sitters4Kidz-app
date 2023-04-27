@@ -27,9 +27,6 @@ public class ChildcarerHomePage extends AppCompatActivity implements RecyclerVie
 
     ArrayList<HomePageSearchItem> items = new ArrayList<>();
 
-    String username = getIntent().getStringExtra("USERNAME");
-    String user_type = getIntent().getStringExtra("USER_TYPE");
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,8 +64,8 @@ public class ChildcarerHomePage extends AppCompatActivity implements RecyclerVie
                 if (city.isEmpty()){
                     showToast("please enter a city name");
                 } else {
-                    // Checks if the city name entered is valid, if not, tells the user to re-enter
-                    // a valid one.
+                    // If no ages have been entered: Checks if the city name entered is valid,
+                    // if not, tells the user to re-enter a valid one.
                     if (is_city_valid && age1.isEmpty() && age2.isEmpty() ) {
 
                         // This search will return all parent users which live in the city that the
@@ -144,11 +141,12 @@ public class ChildcarerHomePage extends AppCompatActivity implements RecyclerVie
                             // Sets the RecyclerView adapter for the search results.
                             search_results.setAdapter(adapter);
 
-                            // Tell user to re-enter, valid ages
+                            // Tell user to re-enter a valid ages
                         } else {
                             showToast("please enter ages that have 1 or 2 characters");
                         }
 
+                        // Tell user to re-enter a valid city name
                     } else {
                         showToast("the city/town name is invalid, " +
                                 "please enter one between the range of 2-30 " +
@@ -161,14 +159,14 @@ public class ChildcarerHomePage extends AppCompatActivity implements RecyclerVie
 
         // Execute this code when the menu button in the top-left corner is pressed,
         // takes user to the 'Settings' page.
+        //TODO: debug the settings button on parent home page
         ImageButton menu_button = (ImageButton) findViewById(R.id.menu_butt);
         menu_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ChildcarerHomePage.this,
                         SettingsPage.class);
-                intent.putExtra("USERNAME", username);
-                intent.putExtra("USER_TYPE", user_type);
+                intent.putExtra("USER_TYPE", "childcarer");
                 startActivity(intent);
             }
         });
@@ -181,8 +179,7 @@ public class ChildcarerHomePage extends AppCompatActivity implements RecyclerVie
             public void onClick(View view) {
                 Intent intent = new Intent(ChildcarerHomePage.this,
                         ChildcarerJobsMenuPage.class);
-                intent.putExtra("USERNAME", username);
-                intent.putExtra("USER_TYPE", user_type);
+                intent.putExtra("USER_TYPE", "childcarer");
                 startActivity(intent);
             }
         });
@@ -195,8 +192,7 @@ public class ChildcarerHomePage extends AppCompatActivity implements RecyclerVie
             public void onClick(View view) {
                 Intent intent = new Intent(ChildcarerHomePage.this,
                         MessagesMenuPage.class);
-                intent.putExtra("USERNAME", username);
-                intent.putExtra("USER_TYPE", user_type);
+                intent.putExtra("USER_TYPE", "childcarer");
                 startActivity(intent);
             }
         });
@@ -210,8 +206,7 @@ public class ChildcarerHomePage extends AppCompatActivity implements RecyclerVie
 
         Intent intent = new Intent(ChildcarerHomePage.this, ParentProfilePage.class);
         intent.putExtra("PARENT_USERNAME", items.get(position).getUsername());
-        intent.putExtra("USERNAME", username);
-        intent.putExtra("USER_TYPE", user_type);
+        intent.putExtra("USER_TYPE", "childcarer");
         startActivity(intent);
 
     }

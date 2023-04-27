@@ -3,70 +3,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="55dp"
+    android:layout_margin="20dp"
     android:background="@drawable/rounded_corners_textview"
-    android:paddingBottom="10dp">
-
+    android:paddingBottom="15dp">
 
     <TextView
-        android:id="@+id/job_post_text"
+        android:id="@+id/childcarer_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/asap"
-        android:paddingTop="10dp"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
-        android:paddingBottom="10dp"
-        android:textAlignment="center"
+        android:paddingBottom="20dp"
+        android:textAlignment="viewStart"
         android:textColor="#14564F"
         android:textSize="24sp"
         android:textStyle="bold"
         android:typeface="normal"
-        tools:text="JOB POST" />
+        tools:text="username" />
 
     <TextView
-        android:id="@+id/post_date"
+        android:id="@+id/childcarer_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/job_post_text"
-        android:fontFamily="@font/asap"
-        android:paddingStart="30dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="20dp"
-        android:textColor="#14564F"
-        android:textSize="18sp"
-        android:typeface="normal"
-        tools:text=" dd / mm / yy " />
-
-    <TextView
-        android:id="@+id/post_start"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/post_date"
+        android:layout_below="@id/childcarer_username"
         android:fontFamily="@font/asap"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
         android:paddingBottom="20dp"
-        android:textAlignment="center"
+        android:textAlignment="viewStart"
         android:textColor="#14564F"
-        android:textSize="16sp"
+        android:textSize="24sp"
         android:typeface="normal"
-        tools:text=" start time " />
+        tools:text="email" />
 
     <TextView
-        android:id="@+id/post_duration"
+        android:id="@+id/childcarer_rate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/post_start"
+        android:layout_below="@id/childcarer_email"
         android:fontFamily="@font/asap"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
         android:paddingBottom="20dp"
-        android:textAlignment="center"
+        android:textAlignment="viewStart"
         android:textColor="#14564F"
-        android:textSize="16sp"
+        android:textSize="24sp"
         android:typeface="normal"
-        tools:text=" duration time " />
+        tools:text="rate" />
 
 </RelativeLayout>
-

@@ -45,27 +45,29 @@ public class ChildcarerSignUpXtraPage extends AppCompatActivity {
                 if (charge_rate.isEmpty() | email.isEmpty()){
                     showToast("some information is missing");
                 } else {
+                    if (charge_rate.length() <= 6) {
+                        // creates and adds a new Document to the 'users' Collection,
+                        // for the new user account.
+                        Map<String, Object> user = new HashMap<>();
+                        user.put("password", password);
+                        user.put("user_type", user_type);
+                        user.put("city", city);
+                        user.put("pay_rate", charge_rate);
+                        user.put("email", email);
+                        db.collection("users").document(username)
+                                .set(user);
 
-                    // creates and adds a new Document to the 'users' Collection,
-                    // for the new user account.
-                    Map<String, Object> user = new HashMap<>();
-                    user.put("password", password);
-                    user.put("user_type", user_type);
-                    user.put("city", city);
-                    user.put("pay_rate", charge_rate);
-                    user.put("email", email);
-                    db.collection("users").document(username)
-                            .set(user);
+                        showToast("new account created!");
 
-                    showToast("new account created!");
-
-                    // Take user to the next page, the 'Childcarer Home Page'.
-                    Intent intent;
-                    intent = new Intent(ChildcarerSignUpXtraPage.this,
-                            ChildcarerHomePage.class);
-                    intent.putExtra("USERNAME", username);
-                    startActivity(intent);
-
+                        // Take user to the next page, the 'Childcarer Home Page'.
+                        Intent intent;
+                        intent = new Intent(ChildcarerSignUpXtraPage.this,
+                                ChildcarerHomePage.class);
+                        intent.putExtra("USERNAME", username);
+                        startActivity(intent);
+                    } else {
+                        showToast("please enter a pay rate that is within 6 characters");
+                    }
                 }
             }
         });
