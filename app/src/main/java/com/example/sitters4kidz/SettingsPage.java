@@ -40,7 +40,7 @@ public class SettingsPage extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent intent;
-                if(user_type == "childcarer") {
+                if(user_type.equals("childcarer")) {
                     intent = new Intent(SettingsPage.this,
                             ChildcarerHomePage.class);
                 } else{

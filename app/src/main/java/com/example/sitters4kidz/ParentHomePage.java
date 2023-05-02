@@ -33,6 +33,9 @@ public class ParentHomePage extends AppCompatActivity {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+        String username = getIntent().getStringExtra("USERNAME");
+        String user_type = getIntent().getStringExtra("USER_TYPE");
+
         // Get all inputs
         EditText city_inp = (EditText) findViewById(R.id.city_inp);
         EditText pay1_inp = (EditText) findViewById(R.id.pay_lower_inp);
@@ -42,9 +45,6 @@ public class ParentHomePage extends AppCompatActivity {
         RecyclerView search_results = findViewById(R.id.parent_homepage_search_recyclerview);
         search_results.setLayoutManager(new LinearLayoutManager(this));
         ParentHomePageSearchAdapter adapter = new ParentHomePageSearchAdapter(getApplicationContext(), items);
-
-        String username = getIntent().getStringExtra("USERNAME");
-        String user_type = getIntent().getStringExtra("USER_TYPE");
 
         // Execute this code when the 'Search' button is pressed.
         Button search_butt = (Button) findViewById(R.id.search_butt);
@@ -116,8 +116,9 @@ public class ParentHomePage extends AppCompatActivity {
                         if (pay1.length() <= 6 && pay2.length() <= 6) {
 
                             // This search will return all childcarer users which charge within the
-                            // pay range entered. Of course, the profiles returned are again, those
-                            // who only live in the city entered by the user also.
+                            // pay range entered, with this working if the pay limits are entered in any order.
+                            // Of course, the profiles returned are again, those who only live in
+                            // the city entered by the user also.
                             db.collection("users")
                                     .whereEqualTo("city", city)
                                     .whereEqualTo("user_type", "childcarer")
@@ -141,7 +142,10 @@ public class ParentHomePage extends AppCompatActivity {
                                                 boolean b1 = int_rate <= int_pay2;
                                                 boolean b2 = int_rate >= int_pay1;
 
-                                                if(b1 && b2) {
+                                                boolean b3 = int_rate >= int_pay2;
+                                                boolean b4 = int_rate <= int_pay1;
+
+                                                if((b1 && b2) | (b3 && b4)) {
 
                                                     StringBuilder sb = new StringBuilder();
                                                     sb.append("£ ");

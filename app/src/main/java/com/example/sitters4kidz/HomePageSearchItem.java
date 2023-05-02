@@ -1,5 +1,6 @@
 package com.example.sitters4kidz;
 
+// An object for the search result items in the RecyclerView in 'activity_childcarer_home_page.xml'.
 public class HomePageSearchItem {
 
     String username;

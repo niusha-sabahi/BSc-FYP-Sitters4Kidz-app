@@ -25,7 +25,7 @@ public class MessagesMenuPage extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent intent;
-                if(user_type == "childcarer") {
+                if(user_type.equals("childcarer")) {
                     intent = new Intent(MessagesMenuPage.this,
                             ChildcarerHomePage.class);
                 } else{
@@ -47,7 +47,7 @@ public class MessagesMenuPage extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent intent;
-                if(user_type == "childcarer") {
+                if(user_type.equals("childcarer")) {
                     intent = new Intent(MessagesMenuPage.this,
                             ChildcarerJobsMenuPage.class);
                 } else{

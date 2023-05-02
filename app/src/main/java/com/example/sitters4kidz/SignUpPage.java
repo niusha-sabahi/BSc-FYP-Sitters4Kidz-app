@@ -61,8 +61,7 @@ public class SignUpPage extends AppCompatActivity {
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 
                             // Check if the username the user has chosen, has already been taken,
-                            // and if so,
-                            // ask them to pick a different one.
+                            // and if so, ask them to pick a different one.
                             if (task.getResult().exists()) {
                                 showToast("an account with this username already exists :(, " +
                                         "please try a different one");

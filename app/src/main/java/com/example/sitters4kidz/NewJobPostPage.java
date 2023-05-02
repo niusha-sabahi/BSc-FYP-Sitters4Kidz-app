@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -71,6 +72,8 @@ public class NewJobPostPage extends AppCompatActivity {
                             "times ");
                 }else {
 
+                    ArrayList<String> applications = new ArrayList<>();
+
                     // If the input is valid, upload the new Job Post to the 'job_posts' collection
                     // in the database.
                     Map<String, Object> job = new HashMap<>();
@@ -82,6 +85,7 @@ public class NewJobPostPage extends AppCompatActivity {
                     job.put("start_min", Integer.parseInt(start_min));
                     job.put("duration_hour", Integer.parseInt(duration_hour));
                     job.put("duration_min", Integer.parseInt(duration_min));
+                    job.put("applications", applications);
                     db.collection("job_posts").add(job);
 
                     // Take user back to the 'Jobs Menu Page'.
@@ -91,6 +95,8 @@ public class NewJobPostPage extends AppCompatActivity {
                     intent.putExtra("USERNAME", username);
                     intent.putExtra("USER_TYPE", user_type);
                     startActivity(intent);
+
+                    showToast(" the new job post has been added! ");
 
                 }
             }
