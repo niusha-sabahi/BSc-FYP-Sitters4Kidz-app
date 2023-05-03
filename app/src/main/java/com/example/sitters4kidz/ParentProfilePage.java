@@ -22,7 +22,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParentProfilePage extends AppCompatActivity {
+public class ParentProfilePage extends AppCompatActivity implements RecyclerViewInterface{
+
+    ArrayList<JobPostsItem> items = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +33,9 @@ public class ParentProfilePage extends AppCompatActivity {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        ArrayList<JobPostsItem> items = new ArrayList<>();
         // Sets up the RecyclerView
         RecyclerView job_posts = findViewById(R.id.job_posts_recyclerview);
-        JobPostsAdapter adapter = new JobPostsAdapter(getApplicationContext(), items);
+        JobPostsAdapter adapter = new JobPostsAdapter(getApplicationContext(), items, this);
         job_posts.setLayoutManager(new LinearLayoutManager(this));
 
         String parent_username = getIntent().getStringExtra("PARENT_USERNAME");
@@ -108,6 +109,8 @@ public class ParentProfilePage extends AppCompatActivity {
                         // Adds the retrieved job posts into the RecyclerView
                         for (QueryDocumentSnapshot document : task.getResult()) {
 
+                            String job_ID = document.getId();
+
                             StringBuilder sb2 = new StringBuilder();
                             Long date_dayL = (Long) document.get("date_day");
                             int date_day = date_dayL.intValue();
@@ -144,7 +147,7 @@ public class ParentProfilePage extends AppCompatActivity {
                             sb4.append(Integer.toString(duration_min));
                             String duration_time = sb4.toString();
 
-                            items.add(new JobPostsItem(date, start_time, duration_time));
+                            items.add(new JobPostsItem(date, start_time, duration_time, job_ID));
                             job_posts.setAdapter(adapter);
 
                         }
@@ -165,5 +168,23 @@ public class ParentProfilePage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    // When a job post is clicked on, the child-carer is taken to another page 'MakeOfferPage.java'
+    // where they can decide if they wish to make an offer on this job.
+    @Override
+    public void onClickRecyclerItem(int position) {
+
+        String parent_username = getIntent().getStringExtra("PARENT_USERNAME");
+        String username = getIntent().getStringExtra("USERNAME");
+        String user_type = getIntent().getStringExtra("USER_TYPE");
+
+        Intent intent = new Intent(ParentProfilePage.this, MakeOfferPage.class);
+        intent.putExtra("JOB_ID", items.get(position).getJob_ID());
+        intent.putExtra("PARENT_USERNAME", parent_username);
+        intent.putExtra("USERNAME", username);
+        intent.putExtra("USER_TYPE", user_type);
+        startActivity(intent);
+
     }
 }

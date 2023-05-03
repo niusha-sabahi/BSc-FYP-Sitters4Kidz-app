@@ -33,6 +33,9 @@ public class ParentHomePage extends AppCompatActivity {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+        String username = getIntent().getStringExtra("USERNAME");
+        String user_type = getIntent().getStringExtra("USER_TYPE");
+
         // Get all inputs
         EditText city_inp = (EditText) findViewById(R.id.city_inp);
         EditText pay1_inp = (EditText) findViewById(R.id.pay_lower_inp);
@@ -42,9 +45,6 @@ public class ParentHomePage extends AppCompatActivity {
         RecyclerView search_results = findViewById(R.id.parent_homepage_search_recyclerview);
         search_results.setLayoutManager(new LinearLayoutManager(this));
         ParentHomePageSearchAdapter adapter = new ParentHomePageSearchAdapter(getApplicationContext(), items);
-
-        String username = getIntent().getStringExtra("USERNAME");
-        String user_type = getIntent().getStringExtra("USER_TYPE");
 
         // Execute this code when the 'Search' button is pressed.
         Button search_butt = (Button) findViewById(R.id.search_butt);

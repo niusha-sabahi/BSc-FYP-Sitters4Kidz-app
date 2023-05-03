@@ -34,6 +34,9 @@ public class ChildcarerHomePage extends AppCompatActivity implements RecyclerVie
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+        String username = getIntent().getStringExtra("USERNAME");
+        String user_type = getIntent().getStringExtra("USER_TYPE");
+
         // Get all inputs
         EditText city_inp = (EditText) findViewById(R.id.city_inp2);
         EditText age1_inp = (EditText) findViewById(R.id.age1_inp);
@@ -159,14 +162,15 @@ public class ChildcarerHomePage extends AppCompatActivity implements RecyclerVie
 
         // Execute this code when the menu button in the top-left corner is pressed,
         // takes user to the 'Settings' page.
-        //TODO: debug the settings button on parent home page
+        //TODO: debug the settings button on parent home page and this page coz this one takes to child jobs menu
         ImageButton menu_button = (ImageButton) findViewById(R.id.menu_butt);
         menu_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ChildcarerHomePage.this,
                         SettingsPage.class);
-                intent.putExtra("USER_TYPE", "childcarer");
+                intent.putExtra("USERNAME", username);
+                intent.putExtra("USER_TYPE", user_type);
                 startActivity(intent);
             }
         });
@@ -179,7 +183,8 @@ public class ChildcarerHomePage extends AppCompatActivity implements RecyclerVie
             public void onClick(View view) {
                 Intent intent = new Intent(ChildcarerHomePage.this,
                         ChildcarerJobsMenuPage.class);
-                intent.putExtra("USER_TYPE", "childcarer");
+                intent.putExtra("USERNAME", username);
+                intent.putExtra("USER_TYPE", user_type);
                 startActivity(intent);
             }
         });
@@ -192,7 +197,8 @@ public class ChildcarerHomePage extends AppCompatActivity implements RecyclerVie
             public void onClick(View view) {
                 Intent intent = new Intent(ChildcarerHomePage.this,
                         MessagesMenuPage.class);
-                intent.putExtra("USER_TYPE", "childcarer");
+                intent.putExtra("USERNAME", username);
+                intent.putExtra("USER_TYPE", user_type);
                 startActivity(intent);
             }
         });
@@ -205,9 +211,13 @@ public class ChildcarerHomePage extends AppCompatActivity implements RecyclerVie
     @Override
     public void onClickRecyclerItem(int position) {
 
+        String username = getIntent().getStringExtra("USERNAME");
+        String user_type = getIntent().getStringExtra("USER_TYPE");
+
         Intent intent = new Intent(ChildcarerHomePage.this, ParentProfilePage.class);
         intent.putExtra("PARENT_USERNAME", items.get(position).getUsername());
-        intent.putExtra("USER_TYPE", "childcarer");
+        intent.putExtra("USERNAME", username);
+        intent.putExtra("USER_TYPE", user_type);
         startActivity(intent);
 
     }

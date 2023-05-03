@@ -34,6 +34,7 @@ public class ParentSignUpXtraPage extends AppCompatActivity {
         EditText email_add_inp = (EditText) findViewById(R.id.email_add_inp);
 
         ArrayList<Integer> ages = new ArrayList<>();
+
         // Grab the data entered by the previous activity.
         String username = getIntent().getStringExtra("USERNAME");
         String password = getIntent().getStringExtra("PASSWORD");
@@ -100,6 +101,7 @@ public class ParentSignUpXtraPage extends AppCompatActivity {
                     intent = new Intent(ParentSignUpXtraPage.this,
                             ParentHomePage.class);
                     intent.putExtra("USERNAME", username);
+                    intent.putExtra("USER_TYPE", user_type);
                     startActivity(intent);
 
                 }

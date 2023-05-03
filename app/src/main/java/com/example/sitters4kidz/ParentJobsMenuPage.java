@@ -19,7 +19,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
-public class ParentJobsMenuPage extends AppCompatActivity {
+public class ParentJobsMenuPage extends AppCompatActivity implements RecyclerViewInterface{
+
+    ArrayList<JobPostsItem> items = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +33,9 @@ public class ParentJobsMenuPage extends AppCompatActivity {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        ArrayList<JobPostsItem> items = new ArrayList<>();
         // Sets up the RecyclerView
         RecyclerView job_posts = findViewById(R.id.parent_jobs_menu_page_recyclerview);
-        JobPostsAdapter adapter = new JobPostsAdapter(getApplicationContext(), items);
+        JobPostsAdapter adapter = new JobPostsAdapter(getApplicationContext(), items, this);
         job_posts.setLayoutManager(new LinearLayoutManager(this));
 
         // This search will return all job posts posted by this parent
@@ -47,6 +48,8 @@ public class ParentJobsMenuPage extends AppCompatActivity {
 
                         // Adds the retrieved job posts into the RecyclerView
                         for (QueryDocumentSnapshot document : task.getResult()) {
+
+                            String job_ID = document.getId();
 
                             StringBuilder sb2 = new StringBuilder();
                             Long date_dayL = (Long) document.get("date_day");
@@ -84,7 +87,7 @@ public class ParentJobsMenuPage extends AppCompatActivity {
                             sb4.append(Integer.toString(duration_min));
                             String duration_time = sb4.toString();
 
-                            items.add(new JobPostsItem(date, start_time, duration_time));
+                            items.add(new JobPostsItem(date, start_time, duration_time, job_ID));
                             job_posts.setAdapter(adapter);
 
                         }
@@ -133,6 +136,23 @@ public class ParentJobsMenuPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+    }
+
+    // When a parent user presses on their own job post, they will be taken to another page called
+    // 'JobPostDetailsPage.java' where they can view the child=carers who have offered to work the
+    // job and select who they wish to award it to.
+    @Override
+    public void onClickRecyclerItem(int position) {
+
+        String username = getIntent().getStringExtra("USERNAME");
+        String user_type = getIntent().getStringExtra("USER_TYPE");
+
+        Intent intent = new Intent(ParentJobsMenuPage.this, JobPostDetailsPage.class);
+        intent.putExtra("JOB_ID", items.get(position).getJob_ID());
+        intent.putExtra("USERNAME", username);
+        intent.putExtra("USER_TYPE", user_type);
+        startActivity(intent);
 
     }
 }

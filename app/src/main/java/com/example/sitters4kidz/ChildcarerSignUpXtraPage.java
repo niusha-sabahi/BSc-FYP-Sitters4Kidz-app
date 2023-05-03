@@ -64,6 +64,7 @@ public class ChildcarerSignUpXtraPage extends AppCompatActivity {
                         intent = new Intent(ChildcarerSignUpXtraPage.this,
                                 ChildcarerHomePage.class);
                         intent.putExtra("USERNAME", username);
+                        intent.putExtra("USER_TYPE", user_type);
                         startActivity(intent);
                     } else {
                         showToast("please enter a pay rate that is within 6 characters");
