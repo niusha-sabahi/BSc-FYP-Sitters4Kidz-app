@@ -21,6 +21,8 @@ public class JobPostsAdapter extends RecyclerView.Adapter<JobPostsAdapter.JobPos
         this.items_j = items_j;
     }
 
+    // Inflates the layout, giving it a desired look using the layout created for the individual
+    // views in the RecyclerView called 'job_posts_item_view.xml'.
     @NonNull
     @Override
     public JobPostsAdapter.JobPostsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -29,6 +31,7 @@ public class JobPostsAdapter extends RecyclerView.Adapter<JobPostsAdapter.JobPos
         return new JobPostsAdapter.JobPostsViewHolder(view);
     }
 
+    // Assigns values to each View in the job_posts_item_view.xml layout.
     @Override
     public void onBindViewHolder(@NonNull JobPostsAdapter.JobPostsViewHolder holder, int position) {
         holder.job_post_text.setText("JOB POST");
@@ -37,11 +40,13 @@ public class JobPostsAdapter extends RecyclerView.Adapter<JobPostsAdapter.JobPos
         holder.post_duration.setText(items_j.get(position).getDuration_time());
     }
 
+    // Gets the number of items that need to be added to the RecyclerView.
     @Override
     public int getItemCount() {
         return items_j.size();
     }
 
+    // Gets all the views in the job_posts_item_view.xml layout created for the list items.
     public static class JobPostsViewHolder extends RecyclerView.ViewHolder{
 
         TextView job_post_text, post_date, post_start, post_duration;

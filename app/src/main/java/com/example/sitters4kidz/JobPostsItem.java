@@ -1,5 +1,6 @@
 package com.example.sitters4kidz;
 
+// An object for the items in the RecyclerViews displaying any list of job posts.
 public class JobPostsItem {
 
     String date;

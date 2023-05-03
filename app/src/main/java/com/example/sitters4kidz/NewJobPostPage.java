@@ -92,6 +92,8 @@ public class NewJobPostPage extends AppCompatActivity {
                     intent.putExtra("USER_TYPE", user_type);
                     startActivity(intent);
 
+                    showToast(" the new job post has been added! ");
+
                 }
             }
         });

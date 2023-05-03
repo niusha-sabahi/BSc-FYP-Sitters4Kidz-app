@@ -27,6 +27,8 @@ public class HomePageSearchAdapter extends RecyclerView.Adapter<HomePageSearchAd
         this.recyclerViewInterface = recyclerViewInterface;
     }
 
+    // Inflates the layout, giving it a desired look using the layout created for the individual
+    // views in the RecyclerView called 'homepage_search_item_view.xml'.
     @NonNull
     @Override
     public HomePageSearchAdapter.HomePageSearchViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -35,16 +37,19 @@ public class HomePageSearchAdapter extends RecyclerView.Adapter<HomePageSearchAd
         return new HomePageSearchAdapter.HomePageSearchViewHolder(view, recyclerViewInterface);
     }
 
+    // Assigns values to each View in the homepage_search_item_view.xml layout.
     @Override
     public void onBindViewHolder(@NonNull HomePageSearchAdapter.HomePageSearchViewHolder holder, int position) {
         holder.username.setText(items.get(position).getUsername());
     }
 
+    // Gets the number of items that need to be added to the RecyclerView.
     @Override
     public int getItemCount() {
         return items.size();
     }
 
+    // Gets all the views in the homepage_search_item_view.xml layout created for the list items.
     public static class HomePageSearchViewHolder extends RecyclerView.ViewHolder {
 
         TextView username;
@@ -54,6 +59,7 @@ public class HomePageSearchAdapter extends RecyclerView.Adapter<HomePageSearchAd
 
             username = itemView.findViewById(R.id.search_res_username);
 
+            // An onClickListener for when an item is clicked on in the RecyclerView.
             itemView.setOnClickListener(new View.OnClickListener() {
 
                 @Override

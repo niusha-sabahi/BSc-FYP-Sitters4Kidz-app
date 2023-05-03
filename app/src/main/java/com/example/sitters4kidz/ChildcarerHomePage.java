@@ -199,8 +199,9 @@ public class ChildcarerHomePage extends AppCompatActivity implements RecyclerVie
 
     }
 
-    // Takes user to a new page, which is the profile page of the parent user which they clicked on
-    // in the RecyclerView of the search results. Passes on the username of the parent chosen.
+    // When a parent's card is clicked on in the search results, this method takes user to a new
+    // page, which is the profile page of the parent user which they clicked on in the
+    // RecyclerView of the search results. Passes on the username of the parent chosen.
     @Override
     public void onClickRecyclerItem(int position) {
 
