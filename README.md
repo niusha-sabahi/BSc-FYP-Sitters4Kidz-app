@@ -3,7 +3,7 @@ Computer Science BSc Final Year Project repository for version control and as a 
 
 For my Final Year Project, I chose to create an Android application using Android Studio. The application allows users to create either child-carer or parent accounts and to connect with other users over the internet to find work/childcare. I used a Firebase Firestore database to store data for this project.
 
-My full project can be viewed in the 'master' branch of this repository.
+**My full project can be viewed in the 'master' branch of this repository.**
 
 ## Intended Usage and Restrictions
 This repository is intended for code visibility and reference purposes only. Users are allowed to:
